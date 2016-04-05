@@ -1,0 +1,354 @@
+<style type="text/css">
+div {
+position:absolute;
+right:0%;
+left:80%;
+width:20%;
+top:0%;
+}
+p {
+position:absolute;
+left:0%;
+right:20%;
+width:80%;
+top:0%;
+}
+</style>
+<div></div>
+<script type="text/javascript">
+document.write("<div></div>")
+document.write("<p>");
+doc = document.getElementsByTagName("p");
+none = "none";
+
+var inter = {name:"Intergalactic", VsB:5.55,VsW:7.78,BP:3.53,WP:2.96,nickname:"Inter",ranking:5,game1:mars,game2:brick,game3:none,game4:villains,game5:ship,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var astro = {name:"Astronauts", VsB:3.23, VsW:7.98,BP:5,WP:3.62,nickname:"Astro",ranking:14,game1:none,game2:space,game3:adv_exp,game4:pilot,game5:pirate,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var brick = {name:"Bricksterbots",VsB:4.29,VsW:7.19,BP:5.65,WP:2.1,nickname:"Brick",ranking:11,game1:none,game2:inter,game3:ship,game4:mars,game5:villains,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var threat = {name:"3Threat",VsB:5.01,VsW:6.92,BP:5.43,WP:2.79,nickname:"3Threat",ranking:6,game1:bandits,game2:none,game3:ced,game4:skel,game5:chief,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var mars = {name:"Martians",VsB:5.16,VsW:8.72,BP:3.6,WP:1.92,nickname:"Martians",ranking:7,game1:inter,game2:none,game3:none,game4:brick,game5:astro,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var fire = {name:"Firefighters",VsB:3.8,VsW:7.84,BP:8.54,WP:2.22,nickname:"Fire",ranking:9,game1:work,game2:none,game3:urban,game4:las,game5:beat,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var skel = {name:"Skeleton Soldiers",VsB:3.45,VsW:5.64,BP:7.13,WP:3.88,nickname:"Skeletons",ranking:17,game1:pirate,game2:square,game3:bandits,game4:threat,game5:wcb,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var adv_exp = {name:"Adventurer's Explorers",VsB:3.81,VsW:6.67,BP:6.86,WP:2.14,nickname:"Adv. Exp.",ranking:4,game1:pilot,game2:arc_exp,game3:astro,game4:tri,game5:space,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var space = {name:"Space Technicians",VsB:3.97,VsW:5.64,BP:8.13,WP:1.34,nickname:"Space Tech",ranking:23,game1:none,game2:astro,game3:tri,game4:pirate,game5:adv_exp,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var urban = {name:"Urban Bombs",VsB:3.49,VsW:7.37,BP:6.36,WP:3.67,nickname:"Urban",ranking:10,game1:beat,game2:none,game3:strikers,game4:work,game5:las,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var tri = {name:"Tricorner Pirates",VsB:4.62,VsW:6.2,BP:4.09,WP:2.91,nickname:"Tricorner",ranking:27,game1:none,game2:pirate,game3:space,game4:adv_exp,game5:pilot,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var bandits = {name:"Bandits",VsB:2.9,VsW:6.14,BP:6.95,WP:4.68,nickname:"Bandits",ranking:22,game1:threat,game2:wcb,game3:skel,game4:ced,game5:law,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var mech = {name:"Arctic Mechanics",VsB:3.98,VsW:6.36,BP:4.54,WP:2.93,nickname:"Mech",ranking:8,game1:medics,game2:none,game3:arc_exp,game4:strikers,game5:work,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var ced = {name:"Cedric's Knights",VsB:3.94,VsW:6.44,BP:6.34,WP:3.4,nickname:"Cedric",ranking:13,game1:chief,game2:lion,game3:threat,game4:bandits,game5:square,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var pirate = {name:"Pirate Skeletons",VsB:3.57,VsW:4.21,BP:6.73,WP:3.38,nickname:"Pirate",ranking:12,game1:skel,game2:tri,game3:pilot,game4:space,game5:astro,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var arc_exp = {name:"Arctic Explorers",VsB:2.92,VsW:4.22,BP:5.51,WP:3.54,nickname:"Arc. Exp.",ranking:21,game1:none,game2:adv_exp,game3:mech,game4:medics,game5:strikers,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var villains = {name:"Adventurer's Villains",VsB:3.78,VsW:4.57,BP:6.93,WP:5.75,nickname:"Villains",ranking:25,game1:none,game2:pilot,game3:none,game4:inter,game5:brick,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var chief = {name:"Chief's Tribe",VsB:2.07,VsW:5.05,BP:5.44,WP:5.95,nickname:"Chief's",ranking:29,game1:ced,game2:law,game3:square,game4:wcb,game5:threat,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var beat = {name:"Beaters",VsB:3.04,VsW:5.02,BP:6.15,WP:4.23,nickname:"Beaters",ranking:19,game1:urban,game2:las,game3:work,game4:urban,game5:fire,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var work = {name:"Construction Workers",VsB:3.21,VsW:6.34,BP:5.95,WP:2.75,nickname:"Work",ranking:18,game1:fire,game2:none,game3:beat,game4:urban,game5:mech,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var ship = {name:"Shipshape Shipmates",VsB:3.71,VsW:5.26,BP:4.38,WP:3.22,nickname:"Ship",ranking:15,game1:none,game2:none,game3:brick,game4:none,game5:inter,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var square = {name:"Square Table",VsB:3.72,VsW:6,BP:7.01,WP:3.61,nickname:"Square",ranking:2,game1:lion,game2:skel,game3:chief,game4:none,game5:ced,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var lion = {name:"Leo's Lions",VsB:3.7,VsW:4.87,BP:5.56,WP:2.9,nickname:"Lions",ranking:16,game1:square,game2:ced,game3:none,game4:law,game5:none,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var medics = {name:"Arctic Medics",VsB:2.71,VsW:4.28,BP:6.61,WP:3.66,nickname:"Medics",ranking:24,game1:mech,game2:none,game3:none,game4:arc_exp,game5:las,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var law = {name:"Lawbringers",VsB:2.07,VsW:6.33,BP:6.62,WP:3.66,nickname:"Law",ranking:1,game1:wcb,game2:chief,game3:none,game4:lion,game5:bandits,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var pilot = {name:"Adventurer's Pilots",VsB:3.77,VsW:5.48,BP:5.23,WP:4.4,nickname:"Pilots",ranking:3,game1:adv_exp,game2:villains,game3:pirate,game4:astro,game5:tri,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var wcb = {name:"Western Cowboys",VsB:2.65,VsW:3.14,BP:5.69,WP:5.16,nickname:"WCB",ranking:28,game1:law,game2:bandits,game3:none,game4:chief,game5:skel,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var las = {name:"Lego All Stars",VsB:2.83,VsW:4.84,BP:7.6,WP:5.7,nickname:"LAS",ranking:20,game1:strikers,game2:beat,game3:none,game4:fire,game5:medics,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+
+var strikers = {name:"City Strikers",VsB:3.59,VsW:5.34,BP:4.66,WP:6.22,nickname:"Strikers",ranking:26,game1:las,game2:none,game3:urban,game4:mech,game5:arc_exp,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
+//alert(strikers.game1.ranking)
+Teams = [inter, astro, brick, threat, mars, fire, skel, adv_exp, space, urban, tri, bandits, mech, ced, pirate, arc_exp, villains, chief, beat, work, ship, square, lion, medics, law, pilot, wcb, las, strikers]
+function SortRank() {
+Teams = Teams.sort(function(a, b) { 
+    return a.ranking - b.ranking;
+})
+}
+//RunSeason()
+function RunSeason() {
+i = 0
+if(i == 0) {
+if(Teams[i].game1_queued == "yes" && Teams[i].game1_played == "no") {
+Team = Teams[i]
+Sim(Teams[i],Teams[i].game1)
+Teams[i].game1_queued = "no";
+Teams[i].game1_played = "yes";
+
+Teams[i].game1.game1_queued = "no";
+Teams[i].game1.game1_played = "yes";
+}
+}
+}
+SortRank()
+function TeamIsRanked(team) {
+for(i = 0; i < 15; i++) {
+if(team == Teams[i]) {
+return i + 1;
+break
+}
+}
+}
+function RandomTeams() {
+Sim(Teams[Math.floor(Math.random() * Teams.length)],Teams[Math.floor(Math.random() * Teams.length)],"norm");
+}
+//Sim(law, ship)
+RandomTeams()
+setInterval(RandomTeams,600)
+
+// Sim Random Teams
+//Sim(Teams[Math.floor(Math.random() * Teams.length)],Teams[Math.floor(Math.random() * Teams.length)],"norm");
+//Sim(law, inter, "norm")
+function Sim(team1, team2, sig) {
+if(team1.ranking < 16 && team2.ranking < 16) {
+document.title = "#" + team1.ranking + " " + team1.name + " vs. #" + team2.ranking + " " + team2.name + "";
+}
+if(team1.ranking < 16 && team2.ranking > 15) {
+document.title = "#" + team1.ranking + " " + team1.name + " vs. " + team2.name + "";
+}
+if(team1.ranking > 15 && team2.ranking < 16) {
+document.title = team1.name + " vs. #" + team2.ranking + " " + team2.name + "";
+}
+if(team1.ranking > 15 && team2.ranking > 15) {
+document.title = team1.name + " vs. " + team2.name + "";
+}
+document.write("<div style='position:absolute;right:0%;left:80%;width:20%;top:0%;'></div>")
+document.write("<p style='width:80%'></div>");
+//alert("Simmed!")
+//console.log(team1.name + "'s ranking before the game was " + team1.ranking + ".")
+//console.log(team2.name + "'s ranking before the game was " + team2.ranking + ".")
+var game = {team1, team2, sig}
+game.team1 = {score:0}
+game.team2 = {score:0}
+game.sig = sig
+//console.log("Game initiated.");
+if(team1.ranking < 16 && team2.ranking < 16) {
+document.write("Amar: Hi, I'm Amar Payton, and you're listening to LSN, the Lego Soccer Network. We have the #" + team1.ranking + " " + team1.name + " vs. the #" + team2.ranking + " " + team2.name + ".<br />");
+}
+if(team1.ranking < 16 && team2.ranking > 15) {
+document.write("Amar: Hi, I'm Amar Payton, and you're listening to LSN, the Lego Soccer Network. We have the #" + team1.ranking + " " + team1.name + " vs. the " + team2.name + ".<br />");
+}
+if(team1.ranking > 15 && team2.ranking < 16) {
+document.write("Amar: Hi, I'm Amar Payton, and you're listening to LSN, the Lego Soccer Network. We have the " + team1.name + " vs. the #" + team2.ranking + " " + team2.name + ".<br />");
+}
+if(team1.ranking > 15 && team2.ranking > 15) {
+document.write("Amar: Hi, I'm Amar Payton, and you're listening to LSN, the Lego Soccer Network. We have the " + team1.name + " vs. the " + team2.name + ".<br />");
+}
+document.write("Amar: It's time for our two analysts to give their predictions, Freddy Fit and Mak Megahertz.<br />")
+document.write("Freddy: Thanks Amar.<br />")
+document.write("Mak: Excited to be here.<br />")
+document.write("Amar: So Mak, let's start with you. What are your thoughts going into this game?<br />")
+Mak = 0
+if(team1.ranking < team2.ranking && team1.WP + team1.BP / 2 > team2.WP + team2.BP) {
+document.write("Mak: Maybe this sounds crazy, but I think " + team2.name + " will pull off the upset here. Look, they've got a stronger defense than " + team1.name + ", and these guys are motivated. Expect to see them come out of the game with a big fat W.<br />")
+//document.write("Amar: Don't you have any prediction about what the score will be? Will this game be close?");
+Mak = 2
+}
+if(team1.ranking > team2.ranking && team1.WP + team1.BP / 2 < team2.WP + team2.BP) {
+document.write("Mak: Shocking as this may sound, I think that " + team1.name + " will pull off the upset here. Look, they've got a stronger defense than " + team2.name + ", and lemme tell ya, these guys are motivated.<br />")
+//document.write("Amar: Don't you have any prediction about what the score will be? Will this game be close?");
+Mak = 1
+}
+if(team1.ranking < team2.ranking && team1.WP + team1.BP / 2 < team2.WP + team2.BP) {
+document.write("Mak: It really should be obvious, " + team1.name + " will walk out of here with a victory. Their defense gives up fewer goals overall, even the AP knows that they're better than the " + team2.name + "!<br />")
+//document.write("Amar: Don't you have any prediction about what the score will be? Will this game be close?");
+Mak = 1
+}
+if(team1.ranking > team2.ranking && team1.WP + team1.BP / 2 > team2.WP + team2.BP) {
+document.write("Mak: " + team2.name + " will likely win this game. They've got a stronger defense, and lemme tell ya, these guys are motivated.<br />")
+//document.write("Amar: Don't you have any prediction about what the score will be? Will this game be close?");
+Mak = 2
+}
+if(Mak == 0 && team1.WP + team1.BP / 2 < team2.WP + team2.BP) {
+document.write("Mak: I think, " + team1.name + " will walk out of here with a victory. Their defense is stronger than the " + team2.name + " defense, and lemme tell ya, defense wins ballgames!<br />")
+//document.write("Amar: Don't you have any prediction about what the score will be? Will this game be close?");
+Mak = 1
+}
+if(Mak == 0 && team1.WP + team1.BP / 2 > team2.WP + team2.BP) {
+document.write("Mak: Seriously, you should know this, " + team2.name + " will absolutely win. They have better defense than " + team1.name + ", and that's what's most important when you're trying to win games.<br />")
+//document.write("Amar: Don't you have any prediction about what the score will be? Will this game be close?");
+Mak = 1
+}
+document.write("Amar: Thanks, Mak. Freddy, what do you think?<br />")
+if(team1.VsW + team1.VsB / 2 > team2.VsW + team2.VsB && Mak == 1) {
+document.write("Freddy: I agree with Mak, " + team1.name + " will most likely win this game because their offense is better. I think that matters a lot.<br />");
+}
+if(team1.VsW + team1.VsB / 2 > team2.VsW + team2.VsB && Mak == 2) {
+document.write("Freddy: On the contrary, Mak, " + team1.name + " will most likely win this game. Their offense is better, and I think that counts a lot. All told, though, every Lego Soccer game is a good Lego Soccer game, and I can't wait to see who will win this one.<br />");
+}
+if(team1.VsW + team1.VsB / 2 < team2.VsW + team2.VsB && Mak == 2) {
+document.write("Freddy: I agree with Mak, " + team2.name + " will most likely win this game. Their offense is better than " + team1.name + " , and I think that counts a lot. All told, though, every Lego Soccer game is a good Lego Soccer game, and I can't wait to see who will win this one.<br />");
+}
+if(team1.VsW + team1.VsB / 2 < team2.VsW + team2.VsB && Mak == 1) {
+document.write("Freddy: On the contrary, Mak, " + team2.name + " will most likely win this game because of their offense. Whoever wins without scoring? Not " + team1.name + ", however it looks like that's exactly what they're trying to do.<br />");
+}
+document.write("Amar: Without further ado, let's sim the game!<br />");
+//console.log("Greeting complete.");
+if(team1.ranking > team2.ranking) {
+game.team1.score = team1.VsW + team2.BP / 2;
+game.team2.score = team2.VsB + team1.WP / 2;
+}
+if(team1.ranking < team2.ranking) {
+game.team1.score = team1.VsB + team2.WP / 2;
+game.team2.score = team2.VsW + team1.BP / 2;
+}
+game.team1.score = Math.round(game.team1.score);
+game.team2.score = Math.round(game.team2.score);
+//console.log("Scores tallied.");
+if(game.team1.score > game.team2.score) {
+document.write("** The " + team1.name + " came out on top, beating " + team2.name + " " + game.team1.score + " to " + game.team2.score + ".<br />")
+//console.log("Announcment made.");
+}
+if(game.team2.score > game.team1.score) {
+document.write("** " + team2.name + " got the hometown win, beating " + team1.name + " " + game.team1.score + " to " + game.team2.score + ".<br />")
+//console.log("Announcment made.");
+}
+if(game.team2.score == game.team1.score) {
+First = Math.random();
+Second = Math.random();
+if(First > Second) {
+game.team1.score = game.team1.score + 1;
+}
+if(Second > First) {
+game.team2.score = game.team2.score + 1;
+}
+if(game.team1.score > game.team2.score) {
+document.write("** After a grueling match, " + team1.name + " came out on top, beating " + team2.name + " " + game.team1.score + " to " + game.team2.score + " in overtime.<br />")
+//console.log("Announcment made.");
+}
+if(game.team2.score > game.team1.score) {
+document.write("** " + team2.name + " got the hometown win, beating " + team1.name + " " + game.team1.score + " to " + game.team2.score + " in overtime.<br />")
+//console.log("Announcment made.");
+}
+}
+if(game.team1.score > game.team2.score) {
+team1.wins = team1.wins + 1
+team2.loss = team2.loss + 1
+//console.log(team1.name + "'s new ranking is " + team1.ranking + ".")
+}
+if(game.team2.score > game.team1.score) {
+team2.wins = team2.wins + 1
+team1.loss = team1.loss + 1
+//console.log(team1.name + "'s new ranking is " + team1.ranking + ".")
+}
+//Team1
+if(team1.ranking > team2.ranking && game.team1.score > game.team2.score) {
+team1.ranking = team1.ranking -6;
+//console.log(team1.name + "'s new ranking is " + team1.ranking + ".")
+}
+else if(game.team1.score > game.team2.score) {
+team1.ranking = team1.ranking -2;
+//console.log(team1.name + "'s new ranking is " + team1.ranking + ".")
+}
+else if(game.team1.score > game.team2.score && game.sig == "conf") {
+team1.ranking = team1.ranking -5;
+//console.log(team1.name + "'s new ranking is " + team1.ranking + ".")
+}
+else if(game.team1.score > game.team2.score && game.sig == "champ") {
+team1.ranking = team1.ranking -9;
+//console.log(team1.name + "'s new ranking is " + team1.ranking + ".")
+}
+if(team1.ranking < team2.ranking && game.team1.score < game.team2.score) {
+console.log(team1.name)
+team1.ranking = team1.ranking +6;
+//console.log(team1.name + "'s new ranking is " + team1.ranking + ".")
+}
+else if(game.team1.score < game.team2.score) {
+team1.ranking = team1.ranking +2;
+//console.log(team1.name + "'s new ranking is " + team1.ranking + ".")
+}
+//Team2
+if(team2.ranking > team1.ranking && game.team2.score > game.team1.score) {
+team2.ranking = team2.ranking -6;
+//console.log(team2.name + "'s new ranking is " + team2.ranking + ".")
+}
+else if(game.team2.score > game.team1.score) {
+
+team2.ranking = team2.ranking -2;
+//console.log(team2.name + "'s new ranking is " + team2.ranking + ".")
+}
+else if(game.team2.score > game.team1.score && game.sig == "conf") {
+team2.ranking = team2.ranking -5;
+//console.log(team2.name + "'s new ranking is " + team2.ranking + ".")
+}
+else if(game.team2.score > game.team1.score && game.sig == "conf") {
+team2.ranking = team2.ranking -5;
+//console.log(team2.name + "'s new ranking is " + team2.ranking + ".")
+}
+else if(game.team2.score > game.team1.score && game.sig == "champ") {
+team2.ranking = team2.ranking -9;
+//console.log(team2.name + "'s new ranking is " + team2.ranking + ".")
+}
+if(team2.ranking < team1.ranking && game.team2.score < game.team1.score) {
+team2.ranking = team2.ranking +6;
+//console.log(team2.name + "'s new ranking is " + team2.ranking + ".")
+}
+else if(game.team2.score < game.team1.score) {
+team2.ranking = team2.ranking +2;
+//console.log(team2.name + "'s new ranking is " + team2.ranking + ".")
+}
+if(TeamIsRanked(team1) < 15 && TeamIsRanked(team2) < 15 && game.team1.score > game.team2.score) {
+console.log("#" + TeamIsRanked(team1) + " " + team1.name + " beat #" + TeamIsRanked(team2) + " " + team2.name + " by a score of " + game.team1.score + " to " + game.team2.score + ".")
+}
+if(TeamIsRanked(team1) < 15 && TeamIsRanked(team2) < 15 && game.team1.score < game.team2.score) {
+console.log("#" + TeamIsRanked(team2) + " " + team2.name + " beat #" + TeamIsRanked(team1) + " " + team1.name + " by a score of " + game.team1.score + " to " + game.team2.score + ".")
+}
+else if(TeamIsRanked(team1) < 15 && game.team1.score > game.team2.score) {
+console.log("#" + TeamIsRanked(team1) + " " + team1.name + " beat " + team2.name + " by a score of " + game.team1.score + " to " + game.team2.score + ".")
+}
+else if(TeamIsRanked(team1) < 15 && game.team1.score < game.team2.score) {
+console.log(team2.name + " beat " + team1.name + " by a score of " + game.team1.score + " to " + game.team2.score + ".")
+}
+else if(TeamIsRanked(team2) < 15 && game.team1.score < game.team2.score) {
+console.log("#" + TeamIsRanked(team2) + " " + team2.name + " beat " + team1.name + " by a score of " + game.team1.score + " to " + game.team2.score + ".")
+}
+else if(TeamIsRanked(team2) < 15 && game.team1.score > game.team2.score) {
+console.log(team1.name + " beat " + team2.name + " by a score of " + game.team1.score + " to " + game.team2.score + ".")
+}
+else {
+console.log(team1.name + " beat " + team2.name + " by a score of " + game.team1.score + " to " + game.team2.score + ".")
+}
+SortRank()
+div = document.getElementsByTagName("div");
+div[0].innerHTML = 
+"#1 " + Teams[0].name + " " + Teams[0].wins + "-" + Teams[0].loss + "<br />"
++ "#2 " + Teams[1].name + " " + Teams[1].wins + "-" + Teams[1].loss + "<br />"
++ "#3 " + Teams[2].name + " " + Teams[2].wins + "-" + Teams[2].loss + "<br />"
++ "#4 " + Teams[3].name + " " + Teams[3].wins + "-" + Teams[3].loss + "<br />"
++ "#5 " + Teams[4].name + " " + Teams[4].wins + "-" + Teams[4].loss + "<br />"
++ "#6 " + Teams[5].name + " " + Teams[5].wins + "-" + Teams[5].loss + "<br />"
++ "#7 " + Teams[6].name + " " + Teams[6].wins + "-" + Teams[6].loss + "<br />"
++ "#8 " + Teams[7].name + " " + Teams[7].wins + "-" + Teams[7].loss + "<br />"
++ "#9 " + Teams[8].name + " " + Teams[8].wins + "-" + Teams[8].loss + "<br />"
++ "#10 " + Teams[9].name + " " + Teams[9].wins + "-" + Teams[9].loss + "<br />"
++ "#11 " + Teams[10].name + " " + Teams[10].wins + "-" + Teams[10].loss + "<br />"
++ "#12 " + Teams[11].name + " " + Teams[11].wins + "-" + Teams[11].loss + "<br />"
++ "#13 " + Teams[12].name + " " + Teams[12].wins + "-" + Teams[12].loss + "<br />"
++ "#14 " + Teams[13].name + " " + Teams[13].wins + "-" + Teams[13].loss + "<br />"
++ "#15 " + Teams[14].name + " " + Teams[14].wins + "-" + Teams[14].loss + "<br />";
+//Sim(Teams[Math.floor(Math.random() * Teams.length)],Teams[Math.floor(Math.random() * Teams.length)],"norm");
+console.log("The " + team1.name + " are now ranked " + TeamIsRanked(team1))
+console.log("The " + team2.name + " are now ranked " + TeamIsRanked(team2))
+}
+
+</script>
