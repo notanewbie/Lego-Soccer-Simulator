@@ -1,0 +1,1504 @@
+<script src="TimeShift.js">
+</script>
+<style type="text/css">
+div {
+position:absolute;
+right:0%;
+left:80%;
+width:20%;
+top:0%;
+}
+div#navArea {
+position:absolute;
+right:0%;
+left:0%;
+width:80%;
+top:0%;
+height:10%;
+}
+p {
+position:absolute;
+left:0%;
+right:20%;
+width:80%;
+top:0%;
+}
+#p {
+position:absolute;
+left:0%;
+right:20%;
+width:80%;
+top:20%;
+}
+audio {
+position: fixed;
+top:0px;
+right: 30vw;
+}
+</style>
+<div></div>
+<div id="p"></div>
+<div id="navArea"><a href="javascript:showTeamStats('All')">All Teams</a> <a href="javascript:showTeamStats(inter)">Intergalactic</a> <a href="javascript:showTeamStats(astro)">Astronauts</a> <a href="javascript:showTeamStats(brick)">Bricksterbots</a> <a href="javascript:showTeamStats(threat)">3Threat</a> <a href="javascript:showTeamStats(mars)">Martians</a> <a href="javascript:showTeamStats(fire)">Firefighters</a> <a href="javascript:showTeamStats(skel)">Skeleton Soldiers</a> <a href="javascript:showTeamStats(adv_exp)">Adventurer's Explorers</a> <a href="javascript:showTeamStats(space)">Space Technicians</a> <a href="javascript:showTeamStats(urban)">Urban Bombs</a> <a href="javascript:showTeamStats(tri)">Tricorner Pirates</a> <a href="javascript:showTeamStats(bandits)">Bandits</a> <a href="javascript:showTeamStats(mech)">Arctic Mechanics</a> <a href="javascript:showTeamStats(ced)">Cedric's Knights</a> <a href="javascript:showTeamStats(pirate)">Pirate Skeletons</a> <a href="javascript:showTeamStats(arc_exp)">Arctic Explorers</a> <a href="javascript:showTeamStats(
+villains)">Adventurer's Villains</a> <a href="javascript:showTeamStats(chief)">Chief's Tribe</a> <a href="javascript:showTeamStats(beat)">Beaters</a> <a href="javascript:showTeamStats(work)">Construction Workers</a> <a href="javascript:showTeamStats(ship)">Shipshape Shipmates</a> <a href="javascript:showTeamStats(square)">Square Table</a> <a href="javascript:showTeamStats(lion)">Leo's Lions</a> <a href="javascript:showTeamStats(medics)">Arctic Medics</a> <a href="javascript:showTeamStats(law)">Lawbringers</a> <a href="javascript:showTeamStats(pilot)">Adventurer's Pilots</a> <a href="javascript:showTeamStats(wcb)">Western Cowboys</a> <a href="javascript:showTeamStats(las)">Lego All Stars</a> <a href="javascript:showTeamStats(strikers)">City Strikers</a> <a href="javascript:showTeamStats('T15')">Top 15</a> <a href="javascript:showTeamStats('Vegas')">Vegas</a> <a href="javascript:showTeamStats('AJ')">AJ's Media Poll</a></div>
+<div id="audioArea"><audio src="" autoplay controls></div>
+<script type="text/javascript">
+function TeamIsRanked(team) {
+for(i = 0; i < 15; i++) {
+if(team == Teams[i]) {
+return i + 1;
+break
+}
+}
+return "NR"
+}
+s = 0
+shown = 0
+audio = document.getElementsByTagName("audio")[0];
+function refresh() {
+audio1 = audio.cloneNode(true)
+audio.parentNode.replaceChild(audio1, audio)
+audio = audio1
+}
+function say(words) {
+if(audio.paused) {
+console.log(words)
+audio.src = words
+audio.load()
+audio.play()
+}
+else {
+audio.addEventListener("ended", function() {say(words); refresh()})
+}
+}
+audio.addEventListener("ended", nextThing)
+function say2(INPUT) {
+WORDS = INPUT
+s = 0
+nextThing()
+}
+function hasWinningRecord(thisTeam) {
+if(thisTeam.wins > thisTeam.loss) {
+return true
+}
+else {
+return false
+}
+}
+function predLive() {
+if(hasWinningRecord(urban)) {
+AmarUrbanPred = "Amar/pred/urban_good.MP3"
+MarUrbanPred1 = "Marielle/pred/conf_champ_post.MP3"
+MarUrbanPred2 = "Marielle/pred/good_team_weak_conf.MP3"
+}
+else {
+AmarUrbanPred = "Amar/pred/urban_bad.MP3"
+MarUrbanPred1 = "Marielle/pred/okay_3-3 2.MP3"
+MarUrbanPred2 = "Marielle/they are clearly outmatched.MP3"
+}
+if(hasWinningRecord(beat)) {
+AmarBeatPred = "Amar/pred/beat_good.MP3"
+MarBeatPred1 = "Marielle/pred/bottom_feeder.MP3"
+MarBeatPred2 = "Marielle/pred/terrible_season.MP3"
+}
+else {
+AmarBeatPred = "Amar/pred/beat_bad.MP3"
+MarBeatPred1 = "Marielle/pred/very_bad_season.wav"
+MarBeatPred2 = "Marielle/pred/bottom_feeder.MP3"
+}
+if(hasWinningRecord(work)) {
+AmarWorkPred = "Amar/pred/work_good.MP3"
+MarWorkPred1 = "Marielle/pred/500_no_postseason.wav"
+MarWorkPred2 = "Marielle/pred/good.wav"
+}
+else {
+AmarWorkPred = "Amar/pred/work_bad.MP3"
+MarWorkPred1 = "Marielle/pred/lookin_weak_4-2.MP3"
+MarWorkPred2 = "Marielle/pred/500_no_postseason.wav"
+}
+if(hasWinningRecord(las)) {
+AmarLASPred = "Amar/pred/las_good.MP3"
+MarLASPred1 = "Marielle/pred/500_no_postseason.wav"
+MarLASPred2 = "Marielle/pred/okay_3-3 2.MP3"
+}
+else {
+AmarLASPred = "Amar/pred/las_bad.MP3"
+MarLASPred1 = "Marielle/pred/bottom_feeder.MP3"
+MarLASPred2 = "Marielle/pred/bad_season.MP3"
+}
+if(hasWinningRecord(strikers)) {
+AmarStrikersPred = "Amar/pred/strikers_good.MP3"
+MarStrikersPred1 = "Marielle/pred/lookin_weak_4-2.MP3"
+MarStrikersPred2 = "Marielle/pred/500_no_postseason.wav"
+}
+else {
+AmarStrikersPred = "Amar/pred/strikers_bad.MP3"
+MarStrikersPred1 = "Marielle/pred/bottom_feeder.MP3"
+MarStrikersPred2 = "Marielle/pred/500_no_postseason.wav"
+}
+if(hasWinningRecord(fire)) {
+AmarFirePred = "Amar/pred/fire_good.MP3"
+MarFirePred1 = "Marielle/pred/conf_champ_elite.MP3"
+MarFirePred2 = "Marielle/pred/conf_champ_post.MP3"
+}
+else {
+AmarFirePred = "Amar/pred/fire_bad.MP3"
+MarFirePred1 = "Marielle/pred/conf_champ_no_postseason.MP3"
+MarFirePred2 = "Marielle/pred/good_team_weak_conf.MP3"
+}
+if(hasWinningRecord(wcb)) {
+AmarWCBPred = "Amar/pred/wcb_good.MP3"
+MarWCBPred1 = "Marielle/pred/okay_3-3 2.MP3"
+MarWCBPred2 = "Marielle/pred/500_no_postseason.wav"
+}
+else {
+AmarWCBPred = "Amar/pred/wcb_bad.MP3"
+MarWCBPred1 = "Marielle/pred/bottom_feeder.MP3"
+MarWCBPred2 = "Marielle/pred/very_bad_season.wav"
+}
+if(hasWinningRecord(chief)) {
+AmarChiefPred = "Amar/pred/chief_good.MP3"
+MarChiefPred1 = "Marielle/pred/good.wav"
+MarChiefPred2 = "Marielle/pred/argue_outfits.MP3"
+}
+else {
+AmarChiefPred = "Amar/pred/chief_bad.MP3"
+MarChiefPred1 = "Marielle/pred/terrible_season.wav"
+MarChiefPred2 = "Marielle/pred/argue_outfits.MP3"
+}
+if(hasWinningRecord(law)) {
+AmarLawPred = "Amar/pred/law_good.MP3"
+MarLawPred1 = "Marielle/pred/lookin_weak_4-2.MP3"
+MarLawPred2 = "Marielle/pred/bad_season.MP3"
+}
+else {
+AmarLawPred = "Amar/pred/law_bad.MP3"
+MarLawPred1 = "Marielle/pred/terrible_season.wav"
+MarLawPred2 = "Marielle/pred/bottom_feeder.MP3"
+}
+if(hasWinningRecord(bandits)) {
+AmarBanditsPred = "Amar/pred/bandit_good.MP3"
+MarBanditsPred1 = "Marielle/pred/lookin_weak_4-2.MP3"
+MarBanditsPred2 = "Marielle/pred/conf_champ_elite.MP3"
+}
+else {
+AmarBanditsPred = "Amar/pred/bandit_bad.MP3"
+MarBanditsPred1 = "Marielle/pred/lookin_weak_4-2.MP3"
+MarBanditsPred2 = "Marielle/pred/good.wav"
+}
+if(hasWinningRecord(threat)) {
+AmarThreatPred = "Amar/pred/threat_good.MP3"
+MarThreatPred1 = "Marielle/pred/good_team_weak_conf.MP3"
+MarThreatPred2 = "Marielle/pred/final_4.wav"
+}
+else {
+AmarThreatPred = "Amar/pred/threat_bad.MP3"
+MarThreatPred1 = "Marielle/pred/lookin_weak_4-2.MP3"
+MarThreatPred2 = "Marielle/pred/champ.wav"
+}
+say2(["", "Amar/Alright and we are glad that you have decided to join us as we are about to start taking a look at some of the projections in this upcoming Lego Soccer season. You know, we don't take days off here! No, we're going to keep on covering all throughout t.MP3", AmarUrbanPred, MarUrbanPred1, MarUrbanPred2, AmarBeatPred, MarBeatPred1, MarBeatPred2, AmarWorkPred, MarWorkPred1, MarWorkPred2, AmarLASPred, MarLASPred1, MarLASPred2, AmarStrikersPred, MarStrikersPred1, MarStrikersPred2, AmarFirePred, MarFirePred1, MarFirePred2, AmarWCBPred, MarWCBPred1, MarWCBPred2, AmarChiefPred, MarChiefPred1, MarChiefPred2, AmarLawPred, MarLawPred1, MarLawPred2, AmarBanditsPred, MarBanditsPred1, MarBanditsPred2, AmarThreatPred, MarThreatPred1, MarThreatPred2])
+}
+function nextThing() {
+//alert("nextThing()")
+if(WORDS.length == s && doNext == "pred") {
+predLive()
+}
+if(WORDS.length > s) {
+audio.src = WORDS[s]
+audio.play()
+s++
+}
+}
+newLog("<div></div>")
+newLog("<p>");
+doc = document.getElementsByTagName("p");
+none = "none";
+var d = new Date();
+var LiveYear = d.getFullYear();
+var LiveMonth = d.getMonth();
+LiveMonth = LiveMonth + 1
+LiveDay = d.getDate()
+LiveHours = d.getHours()
+LiveMinutes = d.getMinutes()
+YEAR = 2016
+Y2D = LiveYear - YEAR
+var inter = {name:"Intergalactic", VsB:5.55,VsW:7.78,BP:3.53,WP:2.96,nickname:"Inter",ranking:5,game1:mars,game2:brick,game3:none,game4:villains,game5:ship,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"Riegel's Turf",place:"Mars",day:"",time:7,est:"7 PM",fulltime:19,log:"",pct:0}
+
+var astro = {name:"Astronauts", VsB:3.23, VsW:7.98,BP:5,WP:3.62,nickname:"Astro",ranking:14,game1:none,game2:space,game3:adv_exp,game4:pilot,game5:pirate,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"NASA Stadium",place:"Super Space Station",day:"",time:6,est:"6 PM",fulltime:18,log:"",pct:0}
+
+var brick = {name:"Bricksterbots",VsB:4.29,VsW:7.19,BP:5.65,WP:2.1,nickname:"Brick",ranking:11,game1:none,game2:inter,game3:ship,game4:mars,game5:villains,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"Riegel's Turf",place:"Mars",day:"",time:8,est:"8 PM",fulltime:20,log:"",pct:0}
+
+var threat = {name:"3Threat",VsB:5.01,VsW:6.92,BP:5.43,WP:2.79,nickname:"3Threat",ranking:6,game1:bandits,game2:none,game3:ced,game4:skel,game5:chief,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"Jeep Field",place:"Salt Lake City, Utah",day:"",time:9,est:"7 PM",fulltime:21,log:"",pct:0}
+
+var mars = {name:"Martians",VsB:5.16,VsW:8.72,BP:3.6,WP:1.92,nickname:"Martians",ranking:7,game1:inter,game2:none,game3:none,game4:brick,game5:astro,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"Riegel's Turf",place:"Mars",day:"",time:9,est:"9 PM",fulltime:21,log:"",pct:0}
+
+var fire = {name:"Firefighters",VsB:3.8,VsW:7.84,BP:8.54,WP:2.22,nickname:"Fire",ranking:9,game1:work,game2:none,game3:urban,game4:las,game5:beat,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"Firehouse Field",place:"Oakton, Virginia",day:"",time:8,est:"8 PM",fulltime:20,log:"",pct:0}
+
+var skel = {name:"Skeleton Soldiers",VsB:3.45,VsW:5.64,BP:7.13,WP:3.88,nickname:"Skeletons",ranking:17,game1:pirate,game2:square,game3:bandits,game4:threat,game5:wcb,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"Graves Field",place:"Asuncion, Paraguay",day:"",time:9,est:"4 PM",fulltime:16,log:"",pct:0}
+
+var adv_exp = {name:"Adventurer's Explorers",VsB:3.81,VsW:6.67,BP:6.86,WP:2.14,nickname:"Adv. Exp.",ranking:4,game1:pilot,game2:arc_exp,game3:astro,game4:tri,game5:space,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"Google Earth Stadium",place:"Buenas Aires, Argentina",day:"",time:6,est:"7 PM",fulltime:19,log:"",pct:0}
+
+var space = {name:"Space Technicians",VsB:3.97,VsW:5.64,BP:8.13,WP:1.34,nickname:"Space Tech",ranking:23,game1:none,game2:astro,game3:tri,game4:pirate,game5:adv_exp,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"USA Stadium",place:"Super Space Station",day:"",time:6,est:"6 PM",fulltime:18,log:"",pct:0}
+
+var urban = {name:"Urban Bombs",VsB:3.49,VsW:7.37,BP:6.36,WP:3.67,nickname:"Urban",ranking:10,game1:beat,game2:none,game3:strikers,game4:work,game5:las,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"Urban Court",place:"Richmond, Virginia",day:"",time:1,est:"1 PM",fulltime:13,log:"",pct:0}
+
+var tri = {name:"Tricorner Pirates",VsB:4.62,VsW:6.2,BP:4.09,WP:2.91,nickname:"Tricorner",ranking:27,game1:none,game2:pirate,game3:space,game4:adv_exp,game5:pilot,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"Trinity Fields",place:"Madrid, Spain",day:"",time:4,est:"10 AM",fulltime:10,log:"",pct:0}
+
+var bandits = {name:"Bandits",VsB:2.9,VsW:6.14,BP:6.95,WP:4.68,nickname:"Bandits",ranking:22,game1:threat,game2:wcb,game3:skel,game4:ced,game5:law,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"S&W Ranch",place:"Oklahoma City, Oklahoma",day:"",time:8,est:"5 PM",fulltime:17,log:"",pct:0}
+
+var mech = {name:"Arctic Mechanics",VsB:3.98,VsW:6.36,BP:4.54,WP:2.93,nickname:"Mech",ranking:8,game1:medics,game2:none,game3:arc_exp,game4:strikers,game5:work,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"BP Stadium",place:"Fort Yukon, Alaska",day:"",time:12,est:"4 PM",fulltime:16,log:"",pct:0}
+
+var ced = {name:"Cedric's Knights",VsB:3.94,VsW:6.44,BP:6.34,WP:3.4,nickname:"Cedric",ranking:13,game1:chief,game2:lion,game3:threat,game4:bandits,game5:square,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"Cedric's Domain",place:"Manchester, England",day:"",time:8,est:"3 PM",fulltime:20,log:"",pct:0}
+
+var pirate = {name:"Pirate Skeletons",VsB:3.57,VsW:4.21,BP:6.73,WP:3.38,nickname:"Pirate",ranking:12,game1:skel,game2:tri,game3:pilot,game4:space,game5:astro,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"Blue Diamond Ship",place:"San Juan, Puerto Rico",day:"",time:6,est:"6 PM",fulltime:18,log:"",pct:0}
+
+var arc_exp = {name:"Arctic Explorers",VsB:2.92,VsW:4.22,BP:5.51,WP:3.54,nickname:"Arc. Exp.",ranking:21,game1:none,game2:adv_exp,game3:mech,game4:medics,game5:strikers,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"Exxon Mobile Slopes",place:"Nome, Alaska",day:"",time:2,est:"6 PM",fulltime:18,log:"",pct:0}
+
+var villains = {name:"Adventurer's Villains",VsB:3.78,VsW:4.57,BP:6.93,WP:5.75,nickname:"Villains",ranking:25,game1:none,game2:pilot,game3:none,game4:inter,game5:brick,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"AiG Field",place:"Sahara, Egypt",day:"",time:12,est:"5 AM",fulltime:5,log:"",pct:0}
+
+var chief = {name:"Chief's Tribe",VsB:2.07,VsW:5.05,BP:5.44,WP:5.95,nickname:"Chief's",ranking:29,game1:ced,game2:law,game3:square,game4:wcb,game5:threat,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"Native Field",place:"Jefferson City, Missouri",day:"",time:7,est:"8 PM",fulltime:20,log:"",pct:0}
+
+var beat = {name:"Beaters",VsB:3.04,VsW:5.02,BP:6.15,WP:4.23,nickname:"Beaters",ranking:19,game1:urban,game2:las,game3:work,game4:urban,game5:fire,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"Champion's Stadium",place:"Washington, DC",day:"",time:1,est:"1 PM",fulltime:13,log:"",pct:0}
+
+var work = {name:"Construction Workers",VsB:3.21,VsW:6.34,BP:5.95,WP:2.75,nickname:"Work",ranking:18,game1:fire,game2:none,game3:beat,game4:urban,game5:mech,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"Freedom Field",place:"New York City, New York",day:"",time:3,est:"3 PM",fulltime:15,log:"",pct:0}
+
+var ship = {name:"Shipshape Shipmates",VsB:3.71,VsW:5.26,BP:4.38,WP:3.22,nickname:"Ship",ranking:15,game1:none,game2:none,game3:brick,game4:none,game5:inter,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"Coca-Cola Park",place:"Lisbon, Portugal",day:"",time:1,est:"8 AM",fulltime:8,log:"",pct:0}
+
+var square = {name:"Square Table",VsB:3.72,VsW:6,BP:7.01,WP:3.61,nickname:"Square",ranking:2,game1:lion,game2:skel,game3:chief,game4:none,game5:ced,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"Royal Estates",place:"Hertfordshire, England",day:"",time:12,est:"7 PM",fulltime:19,log:"",pct:0}
+
+var lion = {name:"Leo's Lions",VsB:3.7,VsW:4.87,BP:5.56,WP:2.9,nickname:"Lions",ranking:16,game1:square,game2:ced,game3:none,game4:law,game5:none,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"Royal Estates",place:"Hertfordshire",day:"",time:4,est:"11 AM",fulltime:11,log:"",pct:0}
+
+var medics = {name:"Arctic Medics",VsB:2.71,VsW:4.28,BP:6.61,WP:3.66,nickname:"Medics",ranking:24,game1:mech,game2:none,game3:none,game4:arc_exp,game5:las,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"Coors Field",place:"Nuuk, Greenland",day:"",time:2,est:"8 PM",fulltime:20,log:"",pct:0}
+
+var law = {name:"Lawbringers",VsB:2.07,VsW:6.33,BP:6.62,WP:3.66,nickname:"Law",ranking:1,game1:wcb,game2:chief,game3:none,game4:lion,game5:bandits,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"Sherrif's Field",place:"Baton Rouge, Louisiana",day:"",time:7,est:"8 PM",fulltime:20,log:"",pct:0}
+
+var pilot = {name:"Adventurer's Pilots",VsB:3.77,VsW:5.48,BP:5.23,WP:4.4,nickname:"Pilots",ranking:3,game1:adv_exp,game2:villains,game3:pirate,game4:astro,game5:tri,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"Elliot Airport",place:"San Salvador, El Salvador",day:"",time:6,est:"8 PM",fulltime:20,log:"",pct:0}
+
+var wcb = {name:"Western Cowboys",VsB:2.65,VsW:3.14,BP:5.69,WP:5.16,nickname:"WCB",ranking:28,game1:law,game2:bandits,game3:none,game4:chief,game5:skel,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"Cactus Stadium",place:"Colorado Springs, Colorado",day:"",time:7,est:"9 PM",fulltime:21,log:"",pct:0}
+
+var las = {name:"Lego All Stars",VsB:2.83,VsW:4.84,BP:7.6,WP:5.7,nickname:"LAS",ranking:20,game1:strikers,game2:beat,game3:none,game4:fire,game5:medics,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"Athlete Stadium",place:"London, England",day:"",time:12,est:"7 AM",fulltime:7,log:"",pct:0}
+
+var strikers = {name:"City Strikers",VsB:3.59,VsW:5.34,BP:4.66,WP:6.22,nickname:"Strikers",ranking:26,game1:las,game2:none,game3:urban,game4:mech,game5:arc_exp,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no",old:0,stadium:"President's Park",place:"Washington, DC",day:"",time:1,est:"1 PM",fulltime:13,log:"",pct:0}
+//alert(strikers.game1.ranking)
+OldTeams = [inter, astro, brick, threat, mars, fire, skel, adv_exp, space, urban, tri, bandits, mech, ced, pirate, arc_exp, villains, chief, beat, work, ship, square, lion, medics, law, pilot, wcb, las, strikers]
+Teams = [inter, astro, brick, threat, mars, fire, skel, adv_exp, space, urban, tri, bandits, mech, ced, pirate, arc_exp, villains, chief, beat, work, ship, square, lion, medics, law, pilot, wcb, las, strikers]
+Vegas = [inter, astro, brick, threat, mars, fire, skel, adv_exp, space, urban, tri, bandits, mech, ced, pirate, arc_exp, villains, chief, beat, work, ship, square, lion, medics, law, pilot, wcb, las, strikers]
+AJ = [inter, astro, brick, threat, mars, fire, skel, adv_exp, space, urban, tri, bandits, mech, ced, pirate, arc_exp, villains, chief, beat, work, ship, square, lion, medics, law, pilot, wcb, las, strikers]
+LCC = [urban, beat, work, las, strikers, fire]
+LCC_log = ""
+WWC = [wcb, chief, law, bandits, threat]
+WWC_log = ""
+KL = [lion, square, ced, skel]
+KL_log = ""
+PC = [pirate, ship, tri]
+PC_log = ""
+SC = [astro, inter, space, mars, brick]
+SC_log = ""
+AC = [pilot, villains, adv_exp]
+AC_log = ""
+AL = [arc_exp, medics, mech]
+AL_log = ""
+T15_log = ""
+function splitLists() {
+inter_log = inter.log.split("<br />")
+astro_log = astro.log.split("<br />")
+brick_log = brick.log.split("<br />")
+threat_log = threat.log.split("<br />")
+mars_log = mars.log.split("<br />")
+fire_log = fire.log.split("<br />")
+skel_log = skel.log.split("<br />")
+adv_exp_log = adv_exp.log.split("<br />")
+space_log = space.log.split("<br />")
+urban_log = tri.log.split("<br />")
+bandits_log = bandits.log.split("<br />")
+mech_log = mech.log.split("<br />")
+ced_log = ced.log.split("<br />")
+pirate_log = pirate.log.split("<br />")
+arc_exp_log = arc_exp.log.split("<br />")
+villains_log = villains.log.split("<br />")
+chief_log = chief.log.split("<br />")
+beat_log = beat.log.split("<br />")
+work_log = work.log.split("<br />")
+ship_log = ship.log.split("<br />")
+square_log = square.log.split("<br />")
+lion_log = lion.log.split("<br />")
+medics_log = medics.log.split("<br />")
+law_log = law.log.split("<br />")
+pilot_log = pilot.log.split("<br />")
+wcb_log = wcb.log.split("<br />")
+las_log = las.log.split("<br />")
+tri_log = tri.log.split("<br />")
+strikers_log = strikers.log.split("<br />")
+LCC_log2 = LCC_log.split("<br />")
+WWC_log2 = WWC_log.split("<br />")
+KL_log2 = KL_log.split("<br />")
+PC_log2 = PC_log.split("<br />")
+SC_log2 = SC_log.split("<br />")
+AC_log2 = AC_log.split("<br />")
+AL_log2 = AL_log.split("<br />")
+T15_log2 = T15_log.split("<br />")
+
+inter_log.reverse()
+astro_log.reverse()
+brick_log.reverse()
+threat_log.reverse()
+mars_log.reverse()
+fire_log.reverse()
+skel_log.reverse()
+adv_exp_log.reverse()
+space_log.reverse()
+urban_log.reverse()
+bandits_log.reverse()
+mech_log.reverse()
+ced_log.reverse()
+pirate_log.reverse()
+arc_exp_log.reverse()
+villains_log.reverse()
+chief_log.reverse()
+beat_log.reverse()
+work_log.reverse()
+ship_log.reverse()
+square_log.reverse()
+lion_log.reverse()
+medics_log.reverse()
+law_log.reverse()
+pilot_log.reverse()
+wcb_log.reverse()
+las_log.reverse()
+tri_log.reverse()
+strikers_log.reverse()
+LCC_log2.reverse()
+WWC_log2.reverse()
+KL_log2.reverse()
+PC_log2.reverse()
+SC_log2.reverse()
+AC_log2.reverse()
+AL_log2.reverse()
+T15_log2.reverse()
+}
+function showTeamStats(useThisUnit) {
+if(useThisUnit.log) {
+div2.innerHTML = useThisUnit.log;
+if(useThisUnit.log == div2.innerHTML) {
+shown = shown + 1;
+}
+}
+else {
+if(useThisUnit == "T15") {
+div2.innerHTML = "Lego Soccer Committe: #1 " + Teams[0].name + " (" + Teams[0].wins + "-" + Teams[0].loss + ") #2 " + Teams[1].name + " (" + Teams[1].wins + "-" + Teams[1].loss + ") #3 " + Teams[2].name + " (" + Teams[2].wins + "-" + Teams[2].loss + ") #4 " + Teams[3].name + " (" + Teams[3].wins + "-" + Teams[3].loss + ") #5 " + Teams[4].name + " (" + Teams[4].wins + "-" + Teams[4].loss + ") #6 " + Teams[5].name + " (" + Teams[5].wins + "-" + Teams[5].loss + ") #7 " + Teams[6].name + " (" + Teams[6].wins + "-" + Teams[6].loss + ") #8 " + Teams[7].name + " (" + Teams[7].wins + "-" + Teams[7].loss + ") #9 " + Teams[8].name + " (" + Teams[8].wins + "-" + Teams[8].loss + ") #10 " + Teams[9].name + " (" + Teams[9].wins + "-" + Teams[9].loss + ") #11 " + Teams[10].name + " (" + Teams[10].wins + "-" + Teams[10].loss + ") #12 " + Teams[11].name + " (" + Teams[11].wins + "-" + Teams[11].loss + ") #13 " + Teams[12].name + " (" + Teams[12].wins + "-" + Teams[12].loss + ") #14 " + Teams[13].name + " (" + Teams[13].wins + "-" + Teams[13].loss + ") #15 " + Teams[14].name + " (" + Teams[14].wins + "-" + Teams[14].loss + ")";
+}
+if(useThisUnit == "Vegas") {
+div2.innerHTML = "Vegas: #1 " + Vegas[0].name + " (" + Vegas[0].wins + "-" + Vegas[0].loss + ") #2 " + Vegas[1].name + " (" + Vegas[1].wins + "-" + Vegas[1].loss + ") #3 " + Vegas[2].name + " (" + Vegas[2].wins + "-" + Vegas[2].loss + ") #4 " + Vegas[3].name + " (" + Vegas[3].wins + "-" + Vegas[3].loss + ") #5 " + Vegas[4].name + " (" + Vegas[4].wins + "-" + Vegas[4].loss + ") #6 " + Vegas[5].name + " (" + Vegas[5].wins + "-" + Vegas[5].loss + ") #7 " + Vegas[6].name + " (" + Vegas[6].wins + "-" + Vegas[6].loss + ") #8 " + Vegas[7].name + " (" + Vegas[7].wins + "-" + Vegas[7].loss + ") #9 " + Vegas[8].name + " (" + Vegas[8].wins + "-" + Vegas[8].loss + ") #10 " + Vegas[9].name + " (" + Vegas[9].wins + "-" + Vegas[9].loss + ") #11 " + Vegas[10].name + " (" + Vegas[10].wins + "-" + Vegas[10].loss + ") #12 " + Vegas[11].name + " (" + Vegas[11].wins + "-" + Vegas[11].loss + ") #13 " + Vegas[12].name + " (" + Vegas[12].wins + "-" + Vegas[12].loss + ") #14 " + Vegas[13].name + " (" + Vegas[13].wins + "-" + Vegas[13].loss + ") #15 " + Vegas[14].name + " (" + Vegas[14].wins + "-" + Vegas[14].loss + ")";
+}
+if(useThisUnit == "AJ") {
+div2.innerHTML = "AJ: #1 " + AJ[0].name + " (" + AJ[0].wins + "-" + AJ[0].loss + ") #2 " + AJ[1].name + " (" + AJ[1].wins + "-" + AJ[1].loss + ") #3 " + AJ[2].name + " (" + AJ[2].wins + "-" + AJ[2].loss + ") #4 " + AJ[3].name + " (" + AJ[3].wins + "-" + AJ[3].loss + ") #5 " + AJ[4].name + " (" + AJ[4].wins + "-" + AJ[4].loss + ") #6 " + AJ[5].name + " (" + AJ[5].wins + "-" + AJ[5].loss + ") #7 " + AJ[6].name + " (" + AJ[6].wins + "-" + AJ[6].loss + ") #8 " + AJ[7].name + " (" + AJ[7].wins + "-" + AJ[7].loss + ") #9 " + AJ[8].name + " (" + AJ[8].wins + "-" + AJ[8].loss + ") #10 " + AJ[9].name + " (" + AJ[9].wins + "-" + AJ[9].loss + ") #11 " + AJ[10].name + " (" + AJ[10].wins + "-" + AJ[10].loss + ") #12 " + AJ[11].name + " (" + AJ[11].wins + "-" + AJ[11].loss + ") #13 " + AJ[12].name + " (" + AJ[12].wins + "-" + AJ[12].loss + ") #14 " + AJ[13].name + " (" + AJ[13].wins + "-" + AJ[13].loss + ") #15 " + AJ[14].name + " (" + AJ[14].wins + "-" + AJ[14].loss + ")";
+}
+if(useThisUnit == "All") {
+div2.innerHTML = fullLog;
+}
+}
+}
+function newLog(theseThings) {
+div2 = document.getElementsByTagName("div")[1]
+div2.innerHTML = div2.innerHTML + theseThings
+fullLog = div2.innerHTML
+if(inter) {
+for(i = 0; i < 29; i++) {
+if(theseThings.indexOf(Teams[i].name) > -1 || theseThings.indexOf("Week") > -1 || theseThings.indexOf("WEEK") > -1 || theseThings.indexOf("Round") > -1 || theseThings.indexOf("schedule") > -1) {
+Teams[i].log = Teams[i].log + theseThings
+if(i < 15) {
+T15_log = T15_log + theseThings
+}
+}
+}
+
+}
+}
+function setOld() {
+i = 0
+for(i = 0; i < 29; i++) {
+Teams[i].old = i
+}
+}
+function SortRank() {
+Teams = Teams.sort(function(a, b) { 
+    return a.ranking - b.ranking;
+})
+Vegas = Vegas.sort(function(a, b) { 
+    return b.pct - a.pct;
+})
+AJ = AJ.sort(function(a, b) { 
+    return b.VsW - a.VsW;
+})
+LCC = LCC.sort(function(a, b) { 
+    return b.wins - a.wins;
+})
+WWC = WWC.sort(function(a, b) { 
+    return b.wins - a.wins;
+})
+KL = KL.sort(function(a, b) { 
+    return b.wins - a.wins;
+})
+PC = PC.sort(function(a, b) { 
+    return b.wins - a.wins;
+})
+SC = SC.sort(function(a, b) { 
+    return b.wins - a.wins;
+})
+}
+function newSeason() {
+for(i = 0; i < 29; i++) {
+Teams[i].wins = 0
+Teams[i].loss = 0
+}
+}
+function confChampLive() {
+if(LiveMonth > 6) {
+LCC_champ = whoWins(LCC[0], LCC[1], "champ")
+WWC_champ = whoWins(WWC[0], WWC[1], "champ")
+KL_champ = whoWins(KL[0], KL[1], "champ")
+PC_champ = whoWins(PC[0], PC[1], "champ")
+SC_champ = whoWins(SC[0], SC[1], "champ")
+AC_champ = whoWins(AC[0], AC[1], "champ")
+AL_champ = whoWins(AL[0], AL[1], "champ")
+}
+if(LiveMonth == 6) {
+if(LiveDay > 19) {
+SC_champ = whoWins(SC[0], SC[1], "champ")
+LCC_champ = whoWins(LCC[0], LCC[1], "champ")
+WWC_champ = whoWins(WWC[0], WWC[1], "champ")
+}
+if(LiveDay > 24) {
+KL_champ = whoWins(KL[0], KL[1], "champ")
+AC_champ = whoWins(AC[0], AC[1], "champ")
+}
+if(LiveDay > 25) {
+AL_champ = whoWins(AL[0], AL[1], "champ")
+PC_champ = whoWins(PC[0], PC[1], "champ")
+}
+}
+}
+function week1() {
+//WEEK1
+newLog("<br />--WEEK 1 SCORES--<br />")
+Sim(fire, urban, "conf")
+Sim(brick, lion, "norm")
+Sim(mech, pirate, "norm")
+Sim(skel, inter, "norm")
+}
+function week2() {
+//WEEK2
+newLog("<br />--WEEK 2 SCORES--<br />")
+Sim(threat, bandits, "conf")
+Sim(beat, urban, "conf")
+Sim(las, work, "conf")
+Sim(wcb, strikers, "conf")
+Sim(law, chief, "conf")
+Sim(square, lion, "conf")
+Sim(skel, ced, "conf")
+Sim(ship, pirate, "conf")
+Sim(mars, tri, "norm")
+Sim(inter, astro, "conf")
+Sim(brick, space, "conf")
+Sim(villains, pilot, "conf")
+Sim(mech, adv_exp, "norm")
+Sim(medics, arc_exp, "conf")
+}
+function week3() {
+//WEEK3
+newLog("<br />--WEEK 3 SCORES--<br />")
+Sim(work, urban, "conf")
+Sim(fire, strikers, "conf")
+Sim(chief, wcb, "conf")
+Sim(threat, law, "conf")
+Sim(ced, lion, "conf")
+Sim(skel, square, "conf")
+Sim(tri, pirate, "conf")
+Sim(medics, ship, "norm")
+Sim(space, astro, "conf")
+Sim(mars, inter, "conf")
+Sim(adv_exp, pilot, "conf")
+Sim(bandits, villains, "norm")
+Sim(mech, arc_exp, "conf")
+}
+function week4() {
+//WEEK4
+newLog("<br />--WEEK 4 SCORES--<br />")
+Sim(las, urban, "conf")
+Sim(skel, lion, "conf")
+Sim(strikers, beat, "conf")
+Sim(ced, work, "norm")
+Sim(law, wcb, "conf")
+Sim(bandits, chief, "conf")
+Sim(fire, threat, "norm")
+Sim(pilot, square, "norm")
+Sim(tri, ship, "conf")
+Sim(space, inter, "conf")
+Sim(astro, mars, "conf")
+Sim(arc_exp, brick, "conf")
+Sim(adv_exp, villains, "conf")
+Sim(mech, medics, "conf")
+}
+function week5() {
+//WEEK5
+newLog("<br />--WEEK 5 SCORES--<br />")
+Sim(strikers, urban, "conf")
+Sim(beat, work, "conf")
+Sim(wcb, bandits, "conf")
+Sim(chief, threat, "conf")
+Sim(fire, las, "conf")
+Sim(pilot, law, "norm")
+Sim(square, ced, "conf")
+Sim(lion, ship, "norm")
+Sim(skel, tri, "norm")
+Sim(mars, space, "conf")
+Sim(inter, brick, "conf")
+Sim(pirate, villains, "norm")
+Sim(medics, adv_exp, "norm")
+Sim(astro, arc_exp, "norm")
+}
+function week6() {
+//WEEK6
+newLog("<br />--WEEK 6 SCORES--<br />")
+Sim(strikers, work, "conf")
+Sim(wcb, threat, "conf")
+Sim(square, urban, "norm")
+Sim(ship, las, "norm")
+Sim(mech, lion, "norm")
+Sim(chief, ced, "norm")
+Sim(adv_exp, tri, "norm")
+Sim(brick, astro, "conf")
+Sim(bandits, mars, "norm")
+Sim(beat, fire, "conf")
+Sim(pirate, pilot, "norm")
+Sim(skel, villains, "norm")
+Sim(space, arc_exp, "norm")
+Sim(law, medics, "norm")
+}
+function week7() {
+//WEEK7
+newLog("<br />--WEEK 7 SCORES--<br />")
+Sim(work, fire, "conf")
+Sim(strikers, las, "conf")
+Sim(bandits, law, "conf")
+Sim(square, beat, "norm")
+Sim(tri, wcb, "norm")
+Sim(pirate, threat, "norm")
+Sim(villains, astro, "norm")
+Sim(brick, mars, "conf")
+Sim(ced, adv_exp, "norm")
+Sim(inter, arc_exp, "norm")
+Sim(space, medics, "norm")
+Sim(ship, mech, "norm")
+setOld()
+}
+function week8() {
+//WEEK8
+newLog("<br />--WEEK 8 SCORES--<br />")
+confChamp()
+}
+function week9() {
+//WEEK9
+newLog("<br />--END OF SEASON BREAK--<br />")
+newLog(WWC_champ.name + " won the Wild West Conference championships.<br />")
+newLog(LCC_champ.name + " won the Lego City Conference championships.<br />")
+newLog(KL_champ.name + " won the Knight's League championships.<br />")
+newLog(PC_champ.name + " won the Pirate's Conference championships.<br />")
+newLog(SC_champ.name + " won the Space Conference championships.<br />")
+newLog(AC_champ.name + " won the Adventurer's Conference championships.<br />")
+newLog(AL_champ.name + " won the Arctic League championships.<br />")
+newLog("<br />The Lego Soccer Committee has released the first-round tournament schedules:<br />")
+newLog("PLAY IN GAME:<br />")
+newLog("#16 " + OldTeams[15].name + " vs " + OldTeams[16].name + "<br />")
+newLog("Round 1 Schedules:<br />")
+newLog("[Winner of Play-In Game] vs #1 " + OldTeams[0].name + "<br />")
+newLog("#8 " + OldTeams[7].name + " vs " + " #9 " + OldTeams[8].name + " (" + OldTeams[7].est + " at " + OldTeams[7].stadium + " in " + OldTeams[7].place + ")<br />")
+newLog("#4 " + OldTeams[3].name + " vs " + " #13 " + OldTeams[12].name + " (" + OldTeams[3].est + " at " + OldTeams[3].stadium + " in " + OldTeams[3].place + ")<br />")
+newLog("#5 " + OldTeams[4].name + " vs " + " #12 " + OldTeams[11].name + " (" + OldTeams[4].est + " at " + OldTeams[4].stadium + " in " + OldTeams[4].place + ")<br />")
+newLog("#2 " + OldTeams[1].name + " vs " + " #15 " + OldTeams[14].name + " (" + OldTeams[1].est + " at " + OldTeams[1].stadium + " in " + OldTeams[1].place + ")<br />")
+newLog("#7 " + OldTeams[6].name + " vs " + " #10 " + OldTeams[9].name + " (" + OldTeams[6].est + " at " + OldTeams[6].stadium + " in " + OldTeams[6].place + ")<br />")
+newLog("#3 " + OldTeams[2].name + " vs " + " #14 " + OldTeams[13].name + " (" + OldTeams[2].est + " at " + OldTeams[2].stadium + " in " + OldTeams[2].place + ")<br />")
+newLog("#6 " + OldTeams[5].name + " vs " + " #11 " + OldTeams[10].name + " (" + OldTeams[5].est + " at " + OldTeams[5].stadium + " in " + OldTeams[5].place + ")<br />")
+}
+function week10() {
+//WEEK10
+newLog("<br />--Tournament Round 1--<br />")
+W1Winner = whoWins(OldTeams[15], OldTeams[16], "champ")
+}
+function week11() {
+//WEEK11
+newLog("<br />--Tournament Round 2 (Sweet Sixteen)--<br />")
+W2Winner1 = whoWins(W1Winner, OldTeams[0], "champ")
+W2Winner2 = whoWins(OldTeams[7], OldTeams[8], "champ")
+W2Winner3 = whoWins(OldTeams[3], OldTeams[12], "champ")
+W2Winner4 = whoWins(OldTeams[4], OldTeams[11], "champ")
+W2Winner5 = whoWins(OldTeams[1], OldTeams[14], "champ")
+W2Winner6 = whoWins(OldTeams[6], OldTeams[9], "champ")
+W2Winner7 = whoWins(OldTeams[2], OldTeams[13], "champ")
+W2Winner8 = whoWins(OldTeams[5], OldTeams[10], "champ")
+newLog("<br />The Lego Soccer Committee has released the third-round tournament schedules:<br />")
+newLog("#" + TeamWasRanked(W2Winner1) + " " + W2Winner1.name + " vs " + "#" + TeamWasRanked(W2Winner2) + " " + W2Winner2.name + " at " + W2Winner1.stadium + " in " + W2Winner1.place + ")<br />")
+newLog("#" + TeamWasRanked(W2Winner3) + " " + W2Winner3.name + " vs " + "#" + TeamWasRanked(W2Winner4) + " " + W2Winner4.name + " at " + W2Winner3.stadium + " in " + W2Winner3.place + ")<br />")
+newLog("#" + TeamWasRanked(W2Winner5) + " " + W2Winner5.name + " vs " + "#" + TeamWasRanked(W2Winner6) + " " + W2Winner6.name + " at " + W2Winner5.stadium + " in " + W2Winner5.place + ")<br />")
+newLog("#" + TeamWasRanked(W2Winner7) + " " + W2Winner7.name + " vs " + "#" + TeamWasRanked(W2Winner8) + " " + W2Winner8.name + " at " + W2Winner7.stadium + " in " + W2Winner7.place + ")<br />")
+}
+function week12() {
+//WEEK12
+newLog("<br />--Tournament Round 3 (Elite Eight)--<br />")
+W3Winner1 = whoWins(W2Winner1, W2Winner2, "champ")
+W3Winner2 = whoWins(W2Winner3, W2Winner4, "champ")
+W3Winner3 = whoWins(W2Winner5, W2Winner6, "champ")
+W3Winner4 = whoWins(W2Winner7, W2Winner8, "champ")
+newLog("<br />The Lego Soccer Committee has released the fourth-round tournament schedules:<br />")
+newLog("#" + TeamWasRanked(W3Winner1) + " " + W3Winner1.name + " vs " + "#" + TeamWasRanked(W3Winner2) + " " + W3Winner2.name + " at " + W3Winner1.stadium + " in " + W3Winner1.place + ")<br />")
+newLog("#" + TeamWasRanked(W3Winner3) + " " + W3Winner3.name + " vs " + "#" + TeamWasRanked(W3Winner4) + " " + W2Winner4.name + " at " + W3Winner3.stadium + " in " + W3Winner3.place + ")<br />")
+}
+function week13() {
+//WEEK13
+newLog("<br />--Tournament Round 4 (Final Four)--<br />")
+W4Winner1 = whoWins(W3Winner1, W3Winner2, "champ")
+W4Winner2 = whoWins(W3Winner3, W3Winner4, "champ")
+newLog("<br />The Lego Soccer Committee has announced the championship game schedule:<br />")
+newLog("#" + TeamWasRanked(W4Winner1) + " " + W4Winner1.name + " vs " + "#" + TeamWasRanked(W4Winner2) + " " + W4Winner2.name + " at " + W4Winner1.stadium + " in " + W4Winner1.place + ")<br />")
+}
+function week14() {
+//WEEK14
+newLog("<br />--Tournament Round 5 (Championship Game)--<br />")
+W5Winner1 = whoWins(W4Winner1, W4Winner2, "champ")
+}
+function week15() {
+//WEEK15
+newLog("<br />--Media Week--<br />")
+newLog(W5Winner1.name + " are the " + YEAR + " champions!<br />")
+}
+function RunSeason() {
+week1()
+week2()
+week3()
+week4()
+week5()
+week6()
+week7()
+week8()
+week9()
+week10()
+week11()
+week12()
+week13()
+week14()
+week15()
+YEAR = YEAR + 1
+}
+//FUNCTIONS FOR LIVE SIMS BELOW:
+
+function confChamp() {
+LCC_champ = whoWins(LCC[0], LCC[1], "champ")
+WWC_champ = whoWins(WWC[0], WWC[1], "champ")
+KL_champ = whoWins(KL[0], KL[1], "champ")
+PC_champ = whoWins(PC[0], PC[1], "champ")
+SC_champ = whoWins(SC[0], SC[1], "champ")
+AC_champ = whoWins(AC[0], AC[1], "champ")
+AL_champ = whoWins(AL[0], AL[1], "champ")
+}
+function week1Live() {
+//WEEK1
+newLog("<br />--WEEK 1 SCORES--<br />")
+if(LiveMonth > 5) {
+Sim(fire, urban, "conf")
+Sim(brick, lion, "norm")
+Sim(mech, pirate, "norm")
+Sim(skel, inter, "norm")
+}
+if(LiveMonth == 5) {
+if(LiveDay > 1) {
+Sim(brick, lion, "norm")
+Sim(fire, urban, "conf")
+}
+if(LiveDay > 6) {
+Sim(skel, inter, "norm")
+}
+if(LiveDay > 7) {
+Sim(mech, pirate, "norm")
+}
+}
+}
+function week2Live() {
+//WEEK2
+newLog("<br />--WEEK 2 SCORES--<br />")
+if(LiveMonth > 5) {
+Sim(threat, bandits, "conf")
+Sim(beat, urban, "conf")
+Sim(las, work, "conf")
+Sim(wcb, strikers, "conf")
+Sim(law, chief, "conf")
+Sim(square, lion, "conf")
+Sim(skel, ced, "conf")
+Sim(ship, pirate, "conf")
+Sim(mars, tri, "norm")
+Sim(inter, astro, "conf")
+Sim(brick, space, "conf")
+Sim(villains, pilot, "conf")
+Sim(mech, adv_exp, "norm")
+Sim(medics, arc_exp, "conf")
+}
+if(LiveMonth == 5) {
+if(LiveDay > 8) {
+Sim(mars, tri, "norm")
+Sim(inter, astro, "conf")
+Sim(brick, space, "conf")
+Sim(beat, urban, "conf")
+Sim(las, work, "conf")
+}
+if(LiveDay > 13) {
+Sim(villains, pilot, "conf")
+Sim(square, lion, "conf")
+Sim(skel, ced, "conf")
+}
+if(LiveDay > 14) {
+Sim(mech, adv_exp, "norm")
+Sim(medics, arc_exp, "conf")
+Sim(ship, pirate, "conf")
+}
+}
+}
+function week3Live() {
+//WEEK3
+newLog("<br />--WEEK 3 SCORES--<br />")
+if(LiveMonth > 5) {
+Sim(work, urban, "conf")
+Sim(fire, strikers, "conf")
+Sim(chief, wcb, "conf")
+Sim(threat, law, "conf")
+Sim(ced, lion, "conf")
+Sim(skel, square, "conf")
+Sim(tri, pirate, "conf")
+Sim(medics, ship, "norm")
+Sim(space, astro, "conf")
+Sim(mars, inter, "conf")
+Sim(adv_exp, pilot, "conf")
+Sim(bandits, villains, "norm")
+Sim(mech, arc_exp, "conf")
+}
+if(LiveMonth == 5) {
+if(LiveDay > 15) {
+Sim(space, astro, "conf")
+Sim(mars, inter, "conf")
+Sim(work, urban, "conf")
+Sim(fire, strikers, "conf")
+}
+if(LiveDay > 20) {
+Sim(adv_exp, pilot, "conf")
+Sim(ced, lion, "conf")
+Sim(skel, square, "conf")
+}
+if(LiveDay > 21) {
+Sim(mech, arc_exp, "conf")
+Sim(tri, pirate, "conf")
+}
+}
+}
+function week4Live() {
+//WEEK4
+newLog("<br />--WEEK 4 SCORES--<br />")
+if(LiveMonth > 5) {
+Sim(las, urban, "conf")
+Sim(skel, lion, "conf")
+Sim(strikers, beat, "conf")
+Sim(ced, work, "norm")
+Sim(law, wcb, "conf")
+Sim(bandits, chief, "conf")
+Sim(fire, threat, "norm")
+Sim(pilot, square, "norm")
+Sim(tri, ship, "conf")
+Sim(space, inter, "conf")
+Sim(astro, mars, "conf")
+Sim(arc_exp, brick, "conf")
+Sim(adv_exp, villains, "conf")
+Sim(mech, medics, "conf")
+}
+if(LiveMonth == 5) {
+if(LiveDay > 22) {
+Sim(space, inter, "conf")
+Sim(astro, mars, "conf")
+Sim(law, wcb, "conf")
+Sim(bandits, chief, "conf")
+Sim(las, urban, "conf")
+Sim(fire, threat, "norm")
+}
+if(LiveDay > 27) {
+Sim(pilot, square, "norm")
+}
+if(LiveDay > 28) {
+Sim(mech, medics, "conf")
+Sim(arc_exp, brick, "conf")
+Sim(tri, ship, "conf")
+}
+}
+}
+function week5Live() {
+//WEEK5
+newLog("<br />--WEEK 5 SCORES--<br />")
+if(LiveMonth > 5) {
+Sim(mars, space, "conf")
+Sim(inter, brick, "conf")
+Sim(wcb, bandits, "conf")
+Sim(chief, threat, "conf")
+Sim(strikers, urban, "conf")
+Sim(beat, work, "conf")
+Sim(fire, las, "conf")
+}
+if(LiveMonth == 5) {
+if(LiveMonth > 29) {
+Sim(mars, space, "conf")
+Sim(inter, brick, "conf")
+Sim(wcb, bandits, "conf")
+Sim(chief, threat, "conf")
+Sim(strikers, urban, "conf")
+Sim(beat, work, "conf")
+Sim(fire, las, "conf")
+}
+}
+if(LiveMonth > 6) {
+Sim(pilot, law, "norm")
+Sim(square, ced, "conf")
+Sim(lion, ship, "norm")
+Sim(skel, tri, "norm")
+Sim(pirate, villains, "norm")
+Sim(medics, adv_exp, "norm")
+Sim(astro, arc_exp, "norm")
+}
+if(LiveMonth == 6) {
+if(LiveDay > 5) {
+Sim(astro, arc_exp, "norm")
+}
+if(LiveDay > 10) {
+Sim(square, ced, "conf")
+Sim(lion, ship, "norm")
+}
+if(LiveDay > 11) {
+Sim(medics, adv_exp, "norm")
+Sim(pirate, villains, "norm")
+}
+}
+}
+function week6Live() {
+//WEEK6
+newLog("<br />--WEEK 6 SCORES--<br />")
+if(LiveMonth > 6) {
+Sim(strikers, work, "conf")
+Sim(wcb, threat, "conf")
+Sim(square, urban, "norm")
+Sim(ship, las, "norm")
+Sim(mech, lion, "norm")
+Sim(chief, ced, "norm")
+Sim(adv_exp, tri, "norm")
+Sim(brick, astro, "conf")
+Sim(bandits, mars, "norm")
+Sim(beat, fire, "conf")
+Sim(pirate, pilot, "norm")
+Sim(skel, villains, "norm")
+Sim(space, arc_exp, "norm")
+Sim(law, medics, "norm")
+}
+if(LiveMonth == 6) {
+if(LiveDay > 12) {
+Sim(space, arc_exp, "norm")
+Sim(strikers, work, "conf")
+Sim(beat, fire, "conf")
+Sim(wcb, threat, "conf")
+Sim(chief, ced, "norm")
+Sim(bandits, mars, "norm")
+Sim(law, medics, "norm")
+}
+if(LiveDay > 17) {
+Sim(adv_exp, tri, "norm")
+Sim(square, urban, "norm")
+Sim(skel, villains, "norm")
+}
+if(LiveDay > 18) {
+Sim(pirate, pilot, "norm")
+Sim(ship, las, "norm")
+}
+}
+}
+function week7Live() {
+//WEEK7
+newLog("<br />--WEEK 7 SCORES--<br />")
+if(LiveMonth > 6) {
+Sim(work, fire, "conf")
+Sim(strikers, las, "conf")
+Sim(bandits, law, "conf")
+Sim(square, beat, "norm")
+Sim(tri, wcb, "norm")
+Sim(pirate, threat, "norm")
+Sim(villains, astro, "norm")
+Sim(brick, mars, "conf")
+Sim(ced, adv_exp, "norm")
+Sim(inter, arc_exp, "norm")
+Sim(space, medics, "norm")
+Sim(ship, mech, "norm")
+setOld()
+}
+if(LiveMonth == 6) {
+if(LiveDay > 12) {
+Sim(inter, arc_exp, "norm")
+Sim(space, medics, "norm")
+Sim(brick, mars, "conf")
+Sim(work, fire, "conf")
+Sim(strikers, las, "conf")
+}
+if(LiveDay > 17) {
+Sim(villains, astro, "norm")
+Sim(square, beat, "norm")
+}
+if(LiveDay > 18) {
+Sim(pirate, threat, "norm")
+Sim(ship, mech, "norm")
+Sim(tri, wcb, "norm")
+}
+}
+}
+function week8Live() {
+//WEEK8
+newLog("<br />--WEEK 8 SCORES--<br />")
+if(LiveMonth > 6) {
+confChampLive()
+}
+}
+function week9Live() {
+//WEEK9
+newLog("<br />--END OF SEASON BREAK--<br />")
+newLog(WWC_champ.name + " won the Wild West Conference championships.<br />")
+newLog(LCC_champ.name + " won the Lego City Conference championships.<br />")
+newLog(KL_champ.name + " won the Knight's League championships.<br />")
+newLog(PC_champ.name + " won the Pirate's Conference championships.<br />")
+newLog(SC_champ.name + " won the Space Conference championships.<br />")
+newLog(AC_champ.name + " won the Adventurer's Conference championships.<br />")
+newLog(AL_champ.name + " won the Arctic League championships.<br />")
+newLog("<br />The Lego Soccer Committee has released the first-round tournament schedules:<br />")
+newLog("PLAY IN GAME:<br />")
+newLog("#16 " + OldTeams[15].name + " vs " + OldTeams[16].name + "<br />")
+newLog("Round 1 Schedules:<br />")
+newLog("[Winner of Play-In Game] vs #1 " + OldTeams[0].name + "<br />")
+newLog("#8 " + OldTeams[7].name + " vs " + " #9 " + OldTeams[8].name + " (" + OldTeams[7].est + " at " + OldTeams[7].stadium + " in " + OldTeams[7].place + ")<br />")
+newLog("#4 " + OldTeams[3].name + " vs " + " #13 " + OldTeams[12].name + " (" + OldTeams[3].est + " at " + OldTeams[3].stadium + " in " + OldTeams[3].place + ")<br />")
+newLog("#5 " + OldTeams[4].name + " vs " + " #12 " + OldTeams[11].name + " (" + OldTeams[4].est + " at " + OldTeams[4].stadium + " in " + OldTeams[4].place + ")<br />")
+newLog("#2 " + OldTeams[1].name + " vs " + " #15 " + OldTeams[14].name + " (" + OldTeams[1].est + " at " + OldTeams[1].stadium + " in " + OldTeams[1].place + ")<br />")
+newLog("#7 " + OldTeams[6].name + " vs " + " #10 " + OldTeams[9].name + " (" + OldTeams[6].est + " at " + OldTeams[6].stadium + " in " + OldTeams[6].place + ")<br />")
+newLog("#3 " + OldTeams[2].name + " vs " + " #14 " + OldTeams[13].name + " (" + OldTeams[2].est + " at " + OldTeams[2].stadium + " in " + OldTeams[2].place + ")<br />")
+newLog("#6 " + OldTeams[5].name + " vs " + " #11 " + OldTeams[10].name + " (" + OldTeams[5].est + " at " + OldTeams[5].stadium + " in " + OldTeams[5].place + ")<br />")
+}
+function week10Live() {
+//WEEK10
+newLog("<br />--Tournament Round 1--<br />")
+if(LiveMonth > 7) {
+W1Winner = whoWins(OldTeams[15], OldTeams[16], "champ")
+}
+if(LiveMonth == 7) {
+if(LiveDay > 3) {
+W1Winner = whoWins(OldTeams[15], OldTeams[16], "champ")
+}
+}
+}
+function week11Live() {
+//WEEK11
+newLog("<br />--Tournament Round 2 (Sweet Sixteen)--<br />")
+if(LiveMonth > 7) {
+W2Winner1 = whoWins(W1Winner, OldTeams[0], "champ")
+W2Winner2 = whoWins(OldTeams[7], OldTeams[8], "champ")
+W2Winner3 = whoWins(OldTeams[3], OldTeams[12], "champ")
+W2Winner4 = whoWins(OldTeams[4], OldTeams[11], "champ")
+W2Winner5 = whoWins(OldTeams[1], OldTeams[14], "champ")
+W2Winner6 = whoWins(OldTeams[6], OldTeams[9], "champ")
+W2Winner7 = whoWins(OldTeams[2], OldTeams[13], "champ")
+W2Winner8 = whoWins(OldTeams[5], OldTeams[10], "champ")
+newLog("<br />The Lego Soccer Committee has released the second-round tournament schedules:<br />")
+newLog("#" + TeamWasRanked(W2Winner1) + " " + W2Winner1.name + " vs " + "#" + TeamWasRanked(W2Winner2) + " " + W2Winner2.name + " (" + W2Winner1.est + " at " + W2Winner1.stadium + " in " + W2Winner1.place + ")<br />")
+newLog("#" + TeamWasRanked(W2Winner3) + " " + W2Winner3.name + " vs " + "#" + TeamWasRanked(W2Winner4) + " " + W2Winner4.name + " (" + W2Winner3.est + " at " + W2Winner3.stadium + " in " + W2Winner3.place + ")<br />")
+newLog("#" + TeamWasRanked(W2Winner5) + " " + W2Winner5.name + " vs " + "#" + TeamWasRanked(W2Winner6) + " " + W2Winner6.name + " (" + W2Winner5.est + " at " + W2Winner5.stadium + " in " + W2Winner5.place + ")<br />")
+newLog("#" + TeamWasRanked(W2Winner7) + " " + W2Winner7.name + " vs " + "#" + TeamWasRanked(W2Winner8) + " " + W2Winner8.name + " (" + W2Winner7.est + " at " + W2Winner7.stadium + " in " + W2Winner7.place + ")<br />")
+}
+if(LiveMonth == 7) {
+if(LiveDay > 9) {
+W2Winner1 = whoWins(W1Winner, OldTeams[0], "champ")
+}
+if(LiveDay > 10) {
+W2Winner2 = whoWins(OldTeams[7], OldTeams[8], "champ")
+}
+if(LiveDay > 11) {
+W2Winner3 = whoWins(OldTeams[3], OldTeams[12], "champ")
+}
+if(LiveDay > 12) {
+W2Winner4 = whoWins(OldTeams[4], OldTeams[11], "champ")
+}
+if(LiveDay > 13) {
+W2Winner5 = whoWins(OldTeams[1], OldTeams[14], "champ")
+}
+if(LiveDay > 14) {
+W2Winner6 = whoWins(OldTeams[6], OldTeams[9], "champ")
+}
+if(LiveDay > 15) {
+W2Winner7 = whoWins(OldTeams[2], OldTeams[13], "champ")
+alert(LiveMonth)
+}
+if(LiveDay > 16) {
+W2Winner8 = whoWins(OldTeams[5], OldTeams[10], "champ")
+newLog("<br />The Lego Soccer Committee has released the second-round tournament schedules:<br />")
+newLog("#" + TeamWasRanked(W2Winner1) + " " + W2Winner1.name + " vs " + "#" + TeamWasRanked(W2Winner2) + " " + W2Winner2.name + " (" + W2Winner1.est + " at " + W2Winner1.stadium + " in " + W2Winner1.place + ")<br />")
+newLog("#" + TeamWasRanked(W2Winner3) + " " + W2Winner3.name + " vs " + "#" + TeamWasRanked(W2Winner4) + " " + W2Winner4.name + " (" + W2Winner3.est + " at " + W2Winner3.stadium + " in " + W2Winner3.place + ")<br />")
+newLog("#" + TeamWasRanked(W2Winner5) + " " + W2Winner5.name + " vs " + "#" + TeamWasRanked(W2Winner6) + " " + W2Winner6.name + " (" + W2Winner5.est + " at " + W2Winner5.stadium + " in " + W2Winner5.place + ")<br />")
+newLog("#" + TeamWasRanked(W2Winner7) + " " + W2Winner7.name + " vs " + "#" + TeamWasRanked(W2Winner8) + " " + W2Winner8.name + " (" + W2Winner7.est + " at " + W2Winner7.stadium + " in " + W2Winner7.place + ")<br />")
+}
+}
+}
+function week12Live() {
+//WEEK12
+newLog("<br />--Tournament Round 3 (Elite Eight)--<br />")
+if(LiveMonth > 7) {
+W3Winner1 = whoWins(W2Winner1, W2Winner2, "champ")
+W3Winner2 = whoWins(W2Winner3, W2Winner4, "champ")
+W3Winner3 = whoWins(W2Winner5, W2Winner6, "champ")
+W3Winner4 = whoWins(W2Winner7, W2Winner8, "champ")
+newLog("<br />The Lego Soccer Committee has released the third-round tournament schedules:<br />")
+newLog("#" + TeamWasRanked(W3Winner1) + " " + W3Winner1.name + " vs " + "#" + TeamWasRanked(W3Winner2) + " " + W3Winner2.name + " (" + W3Winner1.est + " at " + W3Winner1.stadium + " in " + W3Winner1.place + ")<br />")
+newLog("#" + TeamWasRanked(W3Winner3) + " " + W3Winner3.name + " vs " + "#" + TeamWasRanked(W3Winner4) + " " + W3Winner4.name + " (" + W3Winner3.est + " at " + W3Winner3.stadium + " in " + W3Winner3.place + ")<br />")
+}
+if(LiveMonth == 7) {
+if(LiveDay > 18) {
+W3Winner1 = whoWins(W2Winner1, W2Winner2, "champ")
+}
+if(LiveDay > 19) {
+W3Winner2 = whoWins(W2Winner3, W2Winner4, "champ")
+}
+if(LiveDay > 20) {
+W3Winner3 = whoWins(W2Winner5, W2Winner6, "champ")
+}
+if(LiveDay > 21) {
+W3Winner4 = whoWins(W2Winner7, W2Winner8, "champ")
+newLog("<br />The Lego Soccer Committee has released the third-round tournament schedules:<br />")
+newLog("#" + TeamWasRanked(W3Winner1) + " " + W3Winner1.name + " vs " + "#" + TeamWasRanked(W3Winner2) + " " + W3Winner2.name + " (" + W3Winner1.est + " at " + W3Winner1.stadium + " in " + W3Winner1.place + ")<br />")
+newLog("#" + TeamWasRanked(W3Winner3) + " " + W3Winner3.name + " vs " + "#" + TeamWasRanked(W3Winner4) + " " + W3Winner4.name + " (" + W3Winner3.est + " at " + W3Winner3.stadium + " in " + W3Winner3.place + ")<br />")
+}
+}
+}
+function week13Live() {
+//WEEK13
+newLog("<br />--Tournament Round 4 (Final Four)--<br />")
+if(LiveMonth > 7) {
+W4Winner1 = whoWins(W3Winner1, W3Winner2, "champ")
+W4Winner2 = whoWins(W3Winner3, W3Winner4, "champ")
+newLog("<br />The Lego Soccer Committee has announced the championship game schedule:<br />")
+newLog("#" + TeamWasRanked(W4Winner1) + " " + W4Winner1.name + " vs " + "#" + TeamWasRanked(W4Winner2) + " " + W4Winner2.name + " (" + W4Winner1.est + " at " + W4Winner1.stadium + " in " + W4Winner1.place + ")<br />")
+}
+if(LiveMonth == 7) {
+if(LiveDay > 29) {
+W4Winner1 = whoWins(W3Winner1, W3Winner2, "champ")
+W4Winner2 = whoWins(W3Winner3, W3Winner4, "champ")
+newLog("<br />The Lego Soccer Committee has announced the championship game schedule:<br />")
+newLog("#" + TeamWasRanked(W4Winner1) + " " + W4Winner1.name + " vs " + "#" + TeamWasRanked(W4Winner2) + " " + W4Winner2.name + " (" + W4Winner1.est + " at " + W4Winner1.stadium + " in " + W4Winner1.place + ")<br />")
+}
+}
+}
+function week14Live() {
+//WEEK14
+newLog("<br />--Tournament Round 5 (Championship Game)--<br />")
+if(LiveMonth > 8) {
+W5Winner1 = whoWins(W4Winner1, W4Winner2, "champ")
+}
+if(LiveMonth == 8) {
+if(LiveDay > 5) {
+W5Winner1 = whoWins(W4Winner1, W4Winner2, "champ")
+}
+}
+}
+function week15Live() {
+//WEEK15
+newLog("<br />--Media Week--<br />")
+if(LiveMonth > 8) {
+newLog(W5Winner1.name + " are the " + YEAR + " champions!<br />")
+}
+if(LiveMonth == 8) {
+if(LiveDay > 6) {
+newLog(W5Winner1.name + " are the " + YEAR + " champions!<br />")
+}
+}
+function part1() {
+alert("Ding dong!")
+}
+//refresh()
+//say("Amar/" + W5Winner1.name + ".mp3")
+//say("Amar/champions.mp3")
+say2(["Amar/now it's official.mp3","Amar/" + W5Winner1.name + ".mp3","Amar/are.mp3","Amar/champions.mp3","Amar/they.mp3","Amar/are the best team of them all.mp3"])
+doNext = "pred"
+}
+
+//END FUNCTIONS FOR LIVE SIMS
+
+function whoWins(Team1, Team2, kind) {
+WBefore1 = Team1.wins * 1
+WBefore2 = Team2.wins * 1
+Sim(Team1, Team2, kind)
+WAfter1 = Team1.wins * 1
+WAfter2 = Team2.wins * 1
+if(WAfter1 > WBefore1) {
+return Team1
+}
+if(WAfter2 > WBefore2) {
+return Team2
+}
+}
+function Live() {
+if(Y2D > 0) {
+for(i = 0; i < Y2D; i++) {
+RunSeason()
+newSeason()
+}
+newSeason()
+week1Live()
+week2Live()
+week3Live()
+week4Live()
+week5Live()
+week6Live()
+week7Live()
+week8Live()
+week9Live()
+week10Live()
+week11Live()
+week12Live()
+week13Live()
+week14Live()
+week15Live()
+}
+}
+//RunSeason()
+Live()
+splitLists()
+function TeamWasRanked(team) {
+for(i = 0; i < 15; i++) {
+if(team == OldTeams[i]) {
+return i + 1;
+break
+}
+}
+return "NR"
+}
+function RandomTeams(conference) {
+if(conference == "ESC") {
+Sim(ESC[Math.floor(Math.random() * ESC.length)],ESC[Math.floor(Math.random() * ESC.length)],"norm")
+}
+else if(conference == "DFL") {
+Sim(DFL[Math.floor(Math.random() * DFL.length)],DFL[Math.floor(Math.random() * DFL.length)],"norm")
+}
+else {
+Sim(Teams[Math.floor(Math.random() * Teams.length)],Teams[Math.floor(Math.random() * Teams.length)],"norm")
+};
+}
+//Sim(law, ship)
+//RandomTeams()
+//setInterval(RandomTeams,600)
+
+// Sim Random Teams
+//Sim(Teams[Math.floor(Math.random() * Teams.length)],Teams[Math.floor(Math.random() * Teams.length)],"norm");
+//Sim(law, inter, "norm")
+function Sim(team1, team2, sig) {
+if(team1.ranking < 16 && team2.ranking < 16) {
+document.title = "#" + team1.ranking + " " + team1.name + " vs. #" + team2.ranking + " " + team2.name + "";
+}
+if(team1.ranking < 16 && team2.ranking > 15) {
+document.title = "#" + team1.ranking + " " + team1.name + " vs. " + team2.name + "";
+}
+if(team1.ranking > 15 && team2.ranking < 16) {
+document.title = team1.name + " vs. #" + team2.ranking + " " + team2.name + "";
+}
+if(team1.ranking > 15 && team2.ranking > 15) {
+document.title = team1.name + " vs. " + team2.name + "";
+}
+//newLog("<div style='position:absolute;right:0%;left:80%;width:20%;top:0%;'></div>")
+//newLog("<p style='width:80%'></div>");
+//alert("Simmed!")
+//console.log(team1.name + "'s ranking before the game was " + team1.ranking + ".")
+//console.log(team2.name + "'s ranking before the game was " + team2.ranking + ".")
+var game = {team1: team1, team2: team2, sig: sig}
+game.team1 = {score:0}
+game.team2 = {score:0}
+game.sig = sig
+//console.log("Game initiated.");
+if(team1.ranking < 16 && team2.ranking < 16) {
+//newLog("Amar: Hi, I'm Amar Payton, and you're listening to LSN, the Lego Soccer Network. We have the #" + team1.ranking + " " + team1.name + " vs. the #" + team2.ranking + " " + team2.name + ".<br />");
+}
+if(team1.ranking < 16 && team2.ranking > 15) {
+//newLog("Amar: Hi, I'm Amar Payton, and you're listening to LSN, the Lego Soccer Network. We have the #" + team1.ranking + " " + team1.name + " vs. the " + team2.name + ".<br />");
+}
+if(team1.ranking > 15 && team2.ranking < 16) {
+//newLog("Amar: Hi, I'm Amar Payton, and you're listening to LSN, the Lego Soccer Network. We have the " + team1.name + " vs. the #" + team2.ranking + " " + team2.name + ".<br />");
+}
+if(team1.ranking > 15 && team2.ranking > 15) {
+//newLog("Amar: Hi, I'm Amar Payton, and you're listening to LSN, the Lego Soccer Network. We have the " + team1.name + " vs. the " + team2.name + ".<br />");
+}
+//newLog("Amar: It's time for our two analysts to give their predictions, Freddy Fit and Mak Megahertz.<br />")
+//newLog("Freddy: Thanks Amar.<br />")
+//newLog("Mak: Excited to be here.<br />")
+//newLog("Amar: So Mak, let's start with you. What are your thoughts going into this game?<br />")
+Mak = 0
+if(team1.ranking < team2.ranking && team1.WP + team1.BP / 2 > team2.WP + team2.BP) {
+//newLog("Mak: Maybe this sounds crazy, but I think " + team2.name + " will pull off the upset here. Look, they've got a stronger defense than " + team1.name + ", and these guys are motivated. Expect to see them come out of the game with a big fat W.<br />")
+//newLog("Amar: Don't you have any prediction about what the score will be? Will this game be close?");
+Mak = 2
+}
+if(team1.ranking > team2.ranking && team1.WP + team1.BP / 2 < team2.WP + team2.BP) {
+//newLog("Mak: Shocking as this may sound, I think that " + team1.name + " will pull off the upset here. Look, they've got a stronger defense than " + team2.name + ", and lemme tell ya, these guys are motivated.<br />")
+//newLog("Amar: Don't you have any prediction about what the score will be? Will this game be close?");
+Mak = 1
+}
+if(team1.ranking < team2.ranking && team1.WP + team1.BP / 2 < team2.WP + team2.BP) {
+//newLog("Mak: It really should be obvious, " + team1.name + " will walk out of here with a victory. Their defense gives up fewer goals overall, even the AP knows that they're better than the " + team2.name + "!<br />")
+//newLog("Amar: Don't you have any prediction about what the score will be? Will this game be close?");
+Mak = 1
+}
+if(team1.ranking > team2.ranking && team1.WP + team1.BP / 2 > team2.WP + team2.BP) {
+//newLog("Mak: " + team2.name + " will likely win this game. They've got a stronger defense, and lemme tell ya, these guys are motivated.<br />")
+//newLog("Amar: Don't you have any prediction about what the score will be? Will this game be close?");
+Mak = 2
+}
+if(Mak == 0 && team1.WP + team1.BP / 2 < team2.WP + team2.BP) {
+//newLog("Mak: I think, " + team1.name + " will walk out of here with a victory. Their defense is stronger than the " + team2.name + " defense, and lemme tell ya, defense wins ballgames!<br />")
+//newLog("Amar: Don't you have any prediction about what the score will be? Will this game be close?");
+Mak = 1
+}
+if(Mak == 0 && team1.WP + team1.BP / 2 > team2.WP + team2.BP) {
+//newLog("Mak: Seriously, you should know this, " + team2.name + " will absolutely win. They have better defense than " + team1.name + ", and that's what's most important when you're trying to win games.<br />")
+//newLog("Amar: Don't you have any prediction about what the score will be? Will this game be close?");
+Mak = 1
+}
+//newLog("Amar: Thanks, Mak. Freddy, what do you think?<br />")
+if(team1.VsW + team1.VsB / 2 > team2.VsW + team2.VsB && Mak == 1) {
+//newLog("Freddy: I agree with Mak, " + team1.name + " will most likely win this game because their offense is better. I think that matters a lot.<br />");
+}
+if(team1.VsW + team1.VsB / 2 > team2.VsW + team2.VsB && Mak == 2) {
+//newLog("Freddy: On the contrary, Mak, " + team1.name + " will most likely win this game. Their offense is better, and I think that counts a lot. All told, though, every Lego Soccer game is a good Lego Soccer game, and I can't wait to see who will win this one.<br />");
+}
+if(team1.VsW + team1.VsB / 2 < team2.VsW + team2.VsB && Mak == 2) {
+//newLog("Freddy: I agree with Mak, " + team2.name + " will most likely win this game. Their offense is better than " + team1.name + " , and I think that counts a lot. All told, though, every Lego Soccer game is a good Lego Soccer game, and I can't wait to see who will win this one.<br />");
+}
+if(team1.VsW + team1.VsB / 2 < team2.VsW + team2.VsB && Mak == 1) {
+//newLog("Freddy: On the contrary, Mak, " + team2.name + " will most likely win this game because of their offense. Whoever wins without scoring? Not " + team1.name + ", however it looks like that's exactly what they're trying to do.<br />");
+}
+//newLog("Amar: Without further ado, let's sim the game!<br />");
+//console.log("Greeting complete.");
+if(team1.ranking > team2.ranking) {
+game.team1.score = team1.VsW + team2.BP / 2;
+game.team2.score = team2.VsB + team1.WP / 2;
+}
+if(team1.ranking < team2.ranking) {
+game.team1.score = team1.VsB + team2.WP / 2;
+game.team2.score = team2.VsW + team1.BP / 2;
+}
+game.team1.score = Math.round(game.team1.score);
+game.team2.score = Math.round(game.team2.score);
+//console.log("Scores tallied.");
+if(game.team1.score > game.team2.score) {
+newLog(team1.name + " " + game.team1.score + " - " + team2.name + " " + game.team2.score + "<br />")
+//newLog("** The " + team1.name + " came out on top, beating " + team2.name + " " + game.team1.score + " to " + game.team2.score + ".<br />")
+//console.log("Announcment made.");
+}
+if(game.team2.score > game.team1.score) {
+newLog(team1.name + " " + game.team1.score + " - " + team2.name + " " + game.team2.score + "<br />")
+//newLog("** " + team2.name + " got the hometown win, beating " + team1.name + " " + game.team1.score + " to " + game.team2.score + ".<br />")
+//console.log("Announcment made.");
+}
+if(game.team2.score == game.team1.score) {
+if(team1.VsB > team2.VsB) {
+First = 1
+Second = 0
+//First = Math.random();
+//Second = Math.random();
+}
+else {
+First = 0
+Second = 1
+}
+if(First > Second) {
+game.team1.score = game.team1.score + 1;
+}
+if(Second > First) {
+game.team2.score = game.team2.score + 1;
+}
+if(game.team1.score > game.team2.score) {
+newLog(team1.name + " " + game.team1.score + " - " + team2.name + " " + game.team2.score + " [OT]<br />")
+//newLog("** After a grueling match, " + team1.name + " came out on top, beating " + team2.name + " " + game.team1.score + " to " + game.team2.score + " in overtime.<br />")
+//console.log("Announcment made.");
+}
+if(game.team2.score > game.team1.score) {
+newLog(team1.name + " " + game.team1.score + " - " + team2.name + " " + game.team2.score + " [OT]<br />")
+//newLog("** " + team2.name + " got the hometown win, beating " + team1.name + " " + game.team1.score + " to " + game.team2.score + " in overtime.<br />")
+//console.log("Announcment made.");
+}
+}
+if(game.team1.score > game.team2.score) {
+team1.wins = team1.wins + 1
+team2.loss = team2.loss + 1
+//console.log(team1.name + "'s new ranking is " + team1.ranking + ".")
+}
+if(game.team2.score > game.team1.score) {
+team2.wins = team2.wins + 1
+team1.loss = team1.loss + 1
+//console.log(team1.name + "'s new ranking is " + team1.ranking + ".")
+}
+team1.pct = team1.wins / (team1.wins + team1.loss)
+team2.pct = team2.wins / (team2.wins + team2.loss)
+//Team1
+if(team1.ranking > team2.ranking && game.team1.score > game.team2.score) {
+team1.ranking = team1.ranking -6;
+//console.log(team1.name + "'s new ranking is " + team1.ranking + ".")
+}
+else if(game.team1.score > game.team2.score) {
+team1.ranking = team1.ranking -2;
+//console.log(team1.name + "'s new ranking is " + team1.ranking + ".")
+}
+else if(game.team1.score > game.team2.score && game.sig == "conf") {
+team1.ranking = team1.ranking -5;
+//console.log(team1.name + "'s new ranking is " + team1.ranking + ".")
+}
+else if(game.team1.score > game.team2.score && game.sig == "champ") {
+team1.ranking = team1.ranking -9;
+//console.log(team1.name + "'s new ranking is " + team1.ranking + ".")
+}
+if(team1.ranking < team2.ranking && game.team1.score < game.team2.score) {
+console.log(team1.name)
+team1.ranking = team1.ranking +6;
+//console.log(team1.name + "'s new ranking is " + team1.ranking + ".")
+}
+else if(game.team1.score < game.team2.score) {
+team1.ranking = team1.ranking +2;
+//console.log(team1.name + "'s new ranking is " + team1.ranking + ".")
+}
+//Team2
+if(team2.ranking > team1.ranking && game.team2.score > game.team1.score) {
+team2.ranking = team2.ranking -6;
+//console.log(team2.name + "'s new ranking is " + team2.ranking + ".")
+}
+else if(game.team2.score > game.team1.score) {
+
+team2.ranking = team2.ranking -2;
+//console.log(team2.name + "'s new ranking is " + team2.ranking + ".")
+}
+else if(game.team2.score > game.team1.score && game.sig == "conf") {
+team2.ranking = team2.ranking -5;
+//console.log(team2.name + "'s new ranking is " + team2.ranking + ".")
+}
+else if(game.team2.score > game.team1.score && game.sig == "conf") {
+team2.ranking = team2.ranking -5;
+//console.log(team2.name + "'s new ranking is " + team2.ranking + ".")
+}
+else if(game.team2.score > game.team1.score && game.sig == "champ") {
+team2.ranking = team2.ranking -9;
+//console.log(team2.name + "'s new ranking is " + team2.ranking + ".")
+}
+if(team2.ranking < team1.ranking && game.team2.score < game.team1.score) {
+team2.ranking = team2.ranking +6;
+//console.log(team2.name + "'s new ranking is " + team2.ranking + ".")
+}
+else if(game.team2.score < game.team1.score) {
+team2.ranking = team2.ranking +2;
+//console.log(team2.name + "'s new ranking is " + team2.ranking + ".")
+}
+if(TeamIsRanked(team1) < 15 && TeamIsRanked(team2) < 15 && game.team1.score > game.team2.score) {
+console.log("#" + TeamIsRanked(team1) + " " + team1.name + " beat #" + TeamIsRanked(team2) + " " + team2.name + " by a score of " + game.team1.score + " to " + game.team2.score + ".")
+}
+if(TeamIsRanked(team1) < 15 && TeamIsRanked(team2) < 15 && game.team1.score < game.team2.score) {
+console.log("#" + TeamIsRanked(team2) + " " + team2.name + " beat #" + TeamIsRanked(team1) + " " + team1.name + " by a score of " + game.team1.score + " to " + game.team2.score + ".")
+}
+else if(TeamIsRanked(team1) < 15 && game.team1.score > game.team2.score) {
+console.log("#" + TeamIsRanked(team1) + " " + team1.name + " beat " + team2.name + " by a score of " + game.team1.score + " to " + game.team2.score + ".")
+}
+else if(TeamIsRanked(team1) < 15 && game.team1.score < game.team2.score) {
+console.log(team2.name + " beat " + team1.name + " by a score of " + game.team1.score + " to " + game.team2.score + ".")
+}
+else if(TeamIsRanked(team2) < 15 && game.team1.score < game.team2.score) {
+console.log("#" + TeamIsRanked(team2) + " " + team2.name + " beat " + team1.name + " by a score of " + game.team1.score + " to " + game.team2.score + ".")
+}
+else if(TeamIsRanked(team2) < 15 && game.team1.score > game.team2.score) {
+console.log(team1.name + " beat " + team2.name + " by a score of " + game.team1.score + " to " + game.team2.score + ".")
+}
+else {
+console.log(team1.name + " beat " + team2.name + " by a score of " + game.team1.score + " to " + game.team2.score + ".")
+}
+
+SortRank()
+div = document.getElementsByTagName("div");
+div[0].innerHTML = 
+"Top 15:<br />"
++ "#1 " + Teams[0].nickname + " " + Teams[0].wins + "-" + Teams[0].loss + "<br />"
++ "#2 " + Teams[1].nickname + " " + Teams[1].wins + "-" + Teams[1].loss + "<br />"
++ "#3 " + Teams[2].nickname + " " + Teams[2].wins + "-" + Teams[2].loss + "<br />"
++ "#4 " + Teams[3].nickname + " " + Teams[3].wins + "-" + Teams[3].loss + "<br />"
++ "#5 " + Teams[4].nickname + " " + Teams[4].wins + "-" + Teams[4].loss + "<br />"
++ "#6 " + Teams[5].nickname + " " + Teams[5].wins + "-" + Teams[5].loss + "<br />"
++ "#7 " + Teams[6].nickname + " " + Teams[6].wins + "-" + Teams[6].loss + "<br />"
++ "#8 " + Teams[7].nickname + " " + Teams[7].wins + "-" + Teams[7].loss + "<br />"
++ "#9 " + Teams[8].nickname + " " + Teams[8].wins + "-" + Teams[8].loss + "<br />"
++ "#10 " + Teams[9].nickname + " " + Teams[9].wins + "-" + Teams[9].loss + "<br />"
++ "#11 " + Teams[10].nickname + " " + Teams[10].wins + "-" + Teams[10].loss + "<br />"
++ "#12 " + Teams[11].nickname + " " + Teams[11].wins + "-" + Teams[11].loss + "<br />"
++ "#13 " + Teams[12].nickname + " " + Teams[12].wins + "-" + Teams[12].loss + "<br />"
++ "#14 " + Teams[13].nickname + " " + Teams[13].wins + "-" + Teams[13].loss + "<br />"
++ "#15 " + Teams[14].nickname + " " + Teams[14].wins + "-" + Teams[14].loss + "<br /><br />"
++ "Vegas Top 15:<br />"
++ "#1 " + Vegas[0].nickname + " " + Vegas[0].wins + "-" + Vegas[0].loss + "<br />"
++ "#2 " + Vegas[1].nickname + " " + Vegas[1].wins + "-" + Vegas[1].loss + "<br />"
++ "#3 " + Vegas[2].nickname + " " + Vegas[2].wins + "-" + Vegas[2].loss + "<br />"
++ "#4 " + Vegas[3].nickname + " " + Vegas[3].wins + "-" + Vegas[3].loss + "<br />"
++ "#5 " + Vegas[4].nickname + " " + Vegas[4].wins + "-" + Vegas[4].loss + "<br />"
++ "#6 " + Vegas[5].nickname + " " + Vegas[5].wins + "-" + Vegas[5].loss + "<br />"
++ "#7 " + Vegas[6].nickname + " " + Vegas[6].wins + "-" + Vegas[6].loss + "<br />"
++ "#8 " + Vegas[7].nickname + " " + Vegas[7].wins + "-" + Vegas[7].loss + "<br />"
++ "#9 " + Vegas[8].nickname + " " + Vegas[8].wins + "-" + Vegas[8].loss + "<br />"
++ "#10 " + Vegas[9].nickname + " " + Vegas[9].wins + "-" + Vegas[9].loss + "<br />"
++ "#11 " + Vegas[10].nickname + " " + Vegas[10].wins + "-" + Vegas[10].loss + "<br />"
++ "#12 " + Vegas[11].nickname + " " + Vegas[11].wins + "-" + Vegas[11].loss + "<br />"
++ "#13 " + Vegas[12].nickname + " " + Vegas[12].wins + "-" + Vegas[12].loss + "<br />"
++ "#14 " + Vegas[13].nickname + " " + Vegas[13].wins + "-" + Vegas[13].loss + "<br />"
++ "#15 " + Vegas[14].nickname + " " + Vegas[14].wins + "-" + Vegas[14].loss + "<br /><br />"
++ "STANDINGS<br />"
++ "LCC:<br />"
++ "#1 (" + TeamIsRanked(LCC[0]) + ") " + LCC[0].nickname + " " + LCC[0].wins + "-" + LCC[0].loss + "<br />"
++ "#2 (" + TeamIsRanked(LCC[1]) + ") " + LCC[1].nickname + " " + LCC[1].wins + "-" + LCC[1].loss + "<br />"
++ "#3 (" + TeamIsRanked(LCC[2]) + ") " + LCC[2].nickname + " " + LCC[2].wins + "-" + LCC[2].loss + "<br />"
++ "#4 (" + TeamIsRanked(LCC[3]) + ") " + LCC[3].nickname + " " + LCC[3].wins + "-" + LCC[3].loss + "<br />"
++ "#5 (" + TeamIsRanked(LCC[4]) + ") " + LCC[4].nickname + " " + LCC[4].wins + "-" + LCC[4].loss + "<br />"
++ "#6 (" + TeamIsRanked(LCC[5]) + ") " + LCC[5].nickname + " " + LCC[5].wins + "-" + LCC[5].loss + "<br /><br />"
++ "WWC:<br />"
++ "#1 (" + TeamIsRanked(WWC[0]) + ") " + WWC[0].nickname + " " + WWC[0].wins + "-" + WWC[0].loss + "<br />"
++ "#2 (" + TeamIsRanked(WWC[1]) + ") " + WWC[1].nickname + " " + WWC[1].wins + "-" + WWC[1].loss + "<br />"
++ "#3 (" + TeamIsRanked(WWC[2]) + ") " + WWC[2].nickname + " " + WWC[2].wins + "-" + WWC[2].loss + "<br />"
++ "#4 (" + TeamIsRanked(WWC[3]) + ") " + WWC[3].nickname + " " + WWC[3].wins + "-" + WWC[3].loss + "<br />"
++ "#5 (" + TeamIsRanked(WWC[4]) + ") " + WWC[4].nickname + " " + WWC[4].wins + "-" + WWC[4].loss + "<br /><br />"
++ "KL:<br />"
++ "#1 (" + TeamIsRanked(KL[0]) + ") " + KL[0].nickname + " " + KL[0].wins + "-" + KL[0].loss + "<br />"
++ "#2 (" + TeamIsRanked(KL[1]) + ") " + KL[1].nickname + " " + KL[1].wins + "-" + KL[1].loss + "<br />"
++ "#3 (" + TeamIsRanked(KL[2]) + ") " + KL[2].nickname + " " + KL[2].wins + "-" + KL[2].loss + "<br />"
++ "#4 (" + TeamIsRanked(KL[3]) + ") " + KL[3].nickname + " " + KL[3].wins + "-" + KL[3].loss + "<br /><br />"
++ "PC:<br />"
++ "#1 (" + TeamIsRanked(PC[0]) + ") " + PC[0].nickname + " " + PC[0].wins + "-" + PC[0].loss + "<br />"
++ "#2 (" + TeamIsRanked(PC[1]) + ") " + PC[1].nickname + " " + PC[1].wins + "-" + PC[1].loss + "<br />"
++ "#3 (" + TeamIsRanked(PC[2]) + ") " + PC[2].nickname + " " + PC[2].wins + "-" + PC[2].loss + "<br /><br />"
++ "SC:<br />"
++ "#1 (" + TeamIsRanked(SC[0]) + ") " + SC[0].nickname + " " + SC[0].wins + "-" + SC[0].loss + "<br />"
++ "#2 (" + TeamIsRanked(SC[1]) + ") " + SC[1].nickname + " " + SC[1].wins + "-" + SC[1].loss + "<br />"
++ "#3 (" + TeamIsRanked(SC[2]) + ") " + SC[2].nickname + " " + SC[2].wins + "-" + SC[2].loss + "<br />"
++ "#4 (" + TeamIsRanked(SC[3]) + ") " + SC[3].nickname + " " + SC[3].wins + "-" + SC[3].loss + "<br />"
++ "#5 (" + TeamIsRanked(SC[4]) + ") " + SC[4].nickname + " " + SC[4].wins + "-" + SC[4].loss + "<br /><br />"
++ "AC:<br />"
++ "#1 (" + TeamIsRanked(AC[0]) + ") " + AC[0].nickname + " " + AC[0].wins + "-" + AC[0].loss + "<br />"
++ "#2 (" + TeamIsRanked(AC[1]) + ") " + AC[1].nickname + " " + AC[1].wins + "-" + AC[1].loss + "<br />"
++ "#3 (" + TeamIsRanked(AC[2]) + ") " + AC[2].nickname + " " + AC[2].wins + "-" + AC[2].loss + "<br /><br />"
++ "AL:<br />"
++ "#1 (" + TeamIsRanked(AL[0]) + ") " + AL[0].nickname + " " + AL[0].wins + "-" + AL[0].loss + "<br />"
++ "#2 (" + TeamIsRanked(AL[1]) + ") " + AL[1].nickname + " " + AL[1].wins + "-" + AL[1].loss + "<br />"
++ "#3 (" + TeamIsRanked(AL[2]) + ") " + AL[2].nickname + " " + AL[2].wins + "-" + AL[2].loss + "<br /><br />";
+//Sim(Teams[Math.floor(Math.random() * Teams.length)],Teams[Math.floor(Math.random() * Teams.length)],"norm");
+console.log("The " + team1.name + " are now ranked " + TeamIsRanked(team1))
+console.log("The " + team2.name + " are now ranked " + TeamIsRanked(team2))
+}
+
+</script>

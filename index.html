@@ -80,25 +80,433 @@ var las = {name:"Lego All Stars",VsB:2.83,VsW:4.84,BP:7.6,WP:5.7,nickname:"LAS",
 var strikers = {name:"City Strikers",VsB:3.59,VsW:5.34,BP:4.66,WP:6.22,nickname:"Strikers",ranking:26,game1:las,game2:none,game3:urban,game4:mech,game5:arc_exp,game1_queued:"yes",game2_queued:"no",game3_queued:"no",game4_queued:"no",game5_queued:"no",wins:0,loss:0,game1_played:"no",game2_played:"no",game3_played:"no",game4_played:"no",game5_played:"no"}
 //alert(strikers.game1.ranking)
 Teams = [inter, astro, brick, threat, mars, fire, skel, adv_exp, space, urban, tri, bandits, mech, ced, pirate, arc_exp, villains, chief, beat, work, ship, square, lion, medics, law, pilot, wcb, las, strikers]
+DFL = [astro, adv_exp, space, tri, pirate, pilot, villains, ship, arc_exp, medics, wcb, law, lion, square, skel]
+ESC = [inter, mars, brick, urban, beat, work, las, strikers, fire, mech, chief, ced, bandits, threat]
 function SortRank() {
 Teams = Teams.sort(function(a, b) { 
     return a.ranking - b.ranking;
 })
+DFL = DFL.sort(function(a, b) { 
+    return b.wins - a.wins;
+})
+ESC = ESC.sort(function(a, b) { 
+    return b.wins - a.wins;
+})
 }
 //RunSeason()
 function RunSeason() {
-i = 0
-if(i == 0) {
-if(Teams[i].game1_queued == "yes" && Teams[i].game1_played == "no") {
-Team = Teams[i]
-Sim(Teams[i],Teams[i].game1)
-Teams[i].game1_queued = "no";
-Teams[i].game1_played = "yes";
-
-Teams[i].game1.game1_queued = "no";
-Teams[i].game1.game1_played = "yes";
-}
-}
+//WEEK 17
+//17 BYES
+//DFL
+document.write("<br />Week 17 is under way.<br />")
+Sim(pirate, wcb, "conf")
+//ADVENTURER'S VILLAINS HAVE A BYE.
+Sim(ship, lion, "conf")
+Sim(villains, square, "conf")
+Sim(skel, arc_exp, "conf")
+//ASTRONAUTS HAVE A BYE
+//ADVENTURER'S EXPLORERS HAVE A BYE.
+//SPACE TECHNICIANS HAVE A BYE.
+//TRICORNER PIRATES HAVE A BYE.
+//ADVENTURER'S PILOTS HAVE A BYE.
+//ARCTIC MEDICS HAVE A BYE.
+//LAWBRINGERS HAVE A BYE.
+//ESC
+Sim(ced, threat, "conf")
+//INTERGALACTIC HAS A BYE.
+//MARTIANS HAVE A BYE.
+//BRICKSTERBOTS HAVE A BYE.
+//CONSTRUCTION WORKERS HAVE A BYE.
+//LEGO ALL STARS HAVE A BYE.
+//FIREFIGHTERS HAVE A BYE.
+//ARCTIC MECHANICS HAVE A BYE.
+//CHIEF'S TRIBE HAS A BYE.
+//BANDITS HAVE A BYE.
+//WEEK 16
+//15 BYES
+//DFL
+document.write("<br />Week 16 is under way.<br />")
+Sim(skel, ship, "conf")
+Sim(square, arc_exp, "conf")
+Sim(medics, adv_exp, "conf")
+Sim(law, space, "conf")
+Sim(wcb, tri, "conf")
+//PIRATE SKELETONS HAVE A BYE.
+//ADVENTURER'S VILLAINS HAVE A BYE.
+//LEO'S LIONS HAVE A BYE.
+//ASTRONAUTS HAVE A BYE.
+//ADVENTURER'S PILOTS HAVE A BYE.
+//ESC
+Sim(threat, mech, "conf")
+//CEDRIC'S KNIGHTS HAVE A BYE.
+Sim(strikers, bandits, "conf")
+//INTERGALACTIC HAS A BYE.
+//MARTIANS HAVE A BYE.
+//BRICKSTERBOTS HAVE A BYE.
+//CONSTRUCTION WORKERS HAVE A BYE.
+//LEGO ALL STARS HAVE A BYE.
+//FIREFIGHTERS HAVE A BYE.
+//CHIEF'S TRIBE HAVE A BYE.
+//URBAN BOMBS HAVE A BYE.
+//BEATERS HAVE A BYE.
+//WEEK 15
+//13 BYES
+//DFL
+document.write("<br />Week 15 is under way.<br />")
+Sim(arc_exp, lion, "conf")
+Sim(skel, villains, "conf")
+Sim(space, wcb, "conf")
+Sim(tri, law, "conf")
+//SHIPSHAPE SHIPMATES HAVE A BYE.
+Sim(astro, medics, "conf")
+//SQUARE TABLE HAS A BYE.
+//ADVENTURER'S EXPLORERS HAVE A BYE.
+//PIRATE SKELETONS HAVE A BYE.
+//ADVENTURER'S PILOTS HAVE A BYE.
+//ESC
+Sim(ced, strikers, "conf")
+Sim(bandits, chief, "conf")
+Sim(threat, fire, "conf")
+//ARCTIC MECHANICS HAVE A BYE.
+//INTERGALACTIC HAS A BYE.
+//MARTIANS HAVE A BYE.
+//BRICKSTERBOTS HAVE A BYE.
+//URBAN BOMBS HAVE A BYE.
+//BEATERS HAVE A BYE.
+//CONSTRUCTION WORKERS HAVE A BYE.
+//LEGO ALL STARS HAVE A BYE.
+//WEEK 14
+//11 BYES
+//DFL
+document.write("<br />Week 14 is under way.<br />")
+Sim(pilot, skel, "conf")
+Sim(lion, villains, "conf")
+Sim(square, ship, "conf")
+//ARCTIC EXPLORERS HAVE A BYE.
+Sim(astro, wcb, "conf")
+Sim(adv_exp, law, "conf")
+//SPACE TECHNICIANS HAVE A BYE.
+//TRICORNER PIRATES HAVE A BYE.
+//ARCTIC MEDICS HAVE A BYE.
+//PIRATE SKELETONS HAVE A BYE.
+//ESC
+Sim(strikers, threat, "conf")
+Sim(las, fire, "conf")
+Sim(brick, chief, "conf")
+//CEDRIC'S KNIGHTS HAVE A BYE.
+//BANDITS HAVE A BYE.
+Sim(work, mars, "conf")
+//ARCTIC MECHANICS HAVE A BYE.
+//INTERGALACTIC HAS A BYE.
+//URBAN BOMBS HAVE A BYE.
+//BEATERS HAVE A BYE.
+//WEEK 5
+//5 BYES
+//DFL
+document.write("<br />Week 5 is under way.<br />")
+Sim(pirate, astro, "conf")
+Sim(tri, adv_exp, "conf")
+Sim(space, lion, "conf")
+Sim(wcb, square, "conf")
+Sim(medics, skel, "conf")
+Sim(law, pilot, "conf")
+//ADVENTURER'S VILLAINS HAVE A BYE.
+//SHIPSHAPE SHIPMATES HAVE A BYE.
+//ARCTIC EXPLORERS HAVE A BYE.
+//ESC
+Sim(mars, bandits, "conf")
+Sim(urban, threat, "conf")
+Sim(beat, inter, "conf")
+Sim(work, brick, "conf")
+Sim(chief, las, "conf")
+Sim(mech, strikers, "conf")
+//FIREFIGHTERS HAVE A BYE.
+//CEDRIC'S KNIGHTS HAVE A BYE.
+//WEEK 8
+//5 BYES
+//DFL
+document.write("<br />Week 8 is under way.<br />")
+Sim(square, astro, "conf")
+Sim(skel, law, "conf")
+Sim(adv_exp, ship, "conf")
+Sim(villains, tri, "conf")
+Sim(lion, pilot, "conf")
+Sim(space, pirate, "conf")
+//ARCTIC EXPLORERS HAVE A BYE.
+//ARCTIC MEDICS HAVE A BYE.
+//WESTERN COWBOYS HAVE A BYE.
+//ESC
+Sim(ced, inter, "conf")
+Sim(fire, mars, "conf")
+Sim(mech, brick, "conf")
+Sim(chief, urban, "conf")
+Sim(bandits, beat, "conf")
+Sim(threat, work, "conf")
+//LEGO ALL STARS HAVE A BYE.
+//CITY STRIKERS HAVE A BYE.
+//WEEK 11
+//5 BYES
+//DFL
+document.write("<br />Week 11 is under way.<br />")
+Sim(arc_exp, space, "conf")
+Sim(law, astro, "conf")
+Sim(lion, adv_exp, "conf")
+Sim(square, tri, "conf")
+Sim(skel, pirate, "conf")
+//VILLAINS HAVE A BYE.
+//SHIPSHAPE SHIPMATES HAVE A BYE.
+Sim(medics, pilot, "conf")
+//WESTERN COWBOYS HAVE A BYE.
+//ESC
+Sim(fire, brick, "conf")
+Sim(chief, inter, "conf")
+Sim(ced, beat, "conf")
+Sim(bandits, urban, "conf")
+Sim(threat, las, "conf")
+//CITY STRIKERS HAVE A BYE.
+Sim(mech, mars, "conf")
+//CONSTRUCTION WORKERS HAVE A BYE.
+//WEEK 13
+//5 BYES
+//DFL
+document.write("<br />Week 13 is under way.<br />")
+Sim(villains, law, "conf")
+Sim(ship, astro, "conf")
+Sim(arc_exp, pilot, "conf")
+Sim(wcb, adv_exp, "conf")
+Sim(lion, medics, "conf")
+Sim(square, pirate, "conf")
+//SKELETON SOLDIERS HAVE A BYE.
+//SPACE TECHNICIANS HAVE A BYE.
+//TRICORNER PIRATES HAVE A BYE.
+//ESC
+Sim(strikers, brick, "conf")
+Sim(fire, work, "conf")
+Sim(chief, beat, "conf")
+Sim(ced, las, "conf")
+Sim(bandits, mech, "conf")
+//3THREAT HAS A BYE.
+Sim(inter, urban, "conf")
+//MARTIANS HAVE A BYE.
+//WEEK 4
+//3 BYES
+//DFL
+document.write("<br />Week 4 is under way.<br />")
+Sim(astro, tri, "conf")
+Sim(adv_exp, pirate, "conf")
+Sim(space, pilot, "conf")
+Sim(villains, arc_exp, "conf")
+Sim(ship, wcb, "conf")
+Sim(medics, law, "conf")
+//LEO'S LIONS HAVE A BYE.
+//SQUARE TABLE HAS A BYE.
+//SKELETON SOLDIERS HAVE A BYE.
+//ESC
+Sim(inter, brick, "conf")
+Sim(mars, beat, "conf")
+Sim(urban, work, "conf")
+Sim(las, mech, "conf")
+Sim(strikers, chief, "conf")
+Sim(fire, ced, "conf")
+//WEEK 6
+//3 BYES
+//DFL
+document.write("<br />Week 6 is under way.<br />")
+Sim(astro, pilot, "conf")
+Sim(adv_exp, villains, "conf")
+Sim(ship, space, "conf")
+Sim(arc_exp, tri, "conf")
+Sim(lion, pirate, "conf")
+Sim(square, medics, "conf")
+Sim(skel, wcb, "conf")
+//LAWBRINGERS HAVE A BYE.
+//ESC
+Sim(fire, inter, "conf")
+Sim(ced, mars, "conf")
+Sim(bandits, brick, "conf")
+Sim(threat, beat, "conf")
+Sim(urban, las, "conf")
+Sim(work, mech, "conf")
+//CITY STRIKERS HAVE A BYE.
+//CHIEF'S TRIBE HAS A BYE.
+//WEEK 7
+//3 BYES
+//DFL
+document.write("<br />Week 7 is under way.<br />")
+Sim(astro, skel, "conf")
+Sim(pilot, adv_exp, "conf")
+Sim(villains, space, "conf")
+Sim(medics, tri, "conf")
+Sim(ship, pirate, "conf")
+Sim(law, arc_exp, "conf")
+Sim(lion, wcb, "conf")
+//SQUARE TABLE HAS A BYE.
+//ESC
+Sim(work, inter, "conf")
+Sim(las, mars, "conf")
+Sim(beat, brick, "conf")
+Sim(strikers, urban, "conf")
+Sim(bandits, fire, "conf")
+Sim(threat, chief, "conf")
+//CEDRIC'S KNIGHTS HAVE A BYE.
+//ARCTIC MECHANICS HAVE A BYE.
+//WEEK 9
+//3 BYES
+//DFL
+document.write("<br />Week 9 is under way.<br />")
+Sim(astro, arc_exp, "conf")
+Sim(adv_exp, square, "conf")
+Sim(skel, space, "conf")
+Sim(medics, villains, "conf")
+Sim(tri, ship, "conf")
+Sim(pirate, law, "conf")
+//LEO'S LIONS HAVE A BYE.
+Sim(wcb, pilot, "conf")
+//ESC
+Sim(brick, ced, "conf")
+Sim(inter, las, "conf")
+Sim(mars, strikers, "conf")
+Sim(urban, fire, "conf")
+Sim(beat, mech, "conf")
+Sim(work, chief, "conf")
+//BANDITS HAVE A BYE.
+//3THREAT HAS A BYE.
+//WEEK 10
+//3 BYES
+//DFL
+document.write("<br />Week 10 is under way.<br />")
+Sim(arc_exp, adv_exp, "conf")
+Sim(lion, astro, "conf")
+Sim(square, space, "conf")
+Sim(skel, tri, "conf")
+Sim(villains, wcb, "conf")
+Sim(ship, pilot, "conf")
+Sim(medics, pirate, "conf")
+//LAWBRINGERS HAVE A BYE
+//ESC
+Sim(ced, urban, "conf")
+Sim(bandits, work, "conf")
+Sim(threat, mars, "conf")
+Sim(las, brick, "conf")
+Sim(strikers, beat, "conf")
+//FIREFIGHTERS HAVE A BYE.
+Sim(mech, inter, "conf")
+//CHIEF'S TRIBE HAVE A BYE.
+//WEEK 12
+//3 BYES
+//DFL
+document.write("<br />Week 12 is under way.<br />")
+Sim(astro, villains, "conf")
+Sim(law, ship, "conf")
+Sim(pirate, arc_exp, "conf")
+Sim(tri, lion, "conf")
+Sim(pilot, square, "conf")
+Sim(adv_exp, skel, "conf")
+Sim(space, medics, "conf")
+//WESTERN COWBOYS HAVE A BYE.
+//ESC
+Sim(inter, strikers, "conf")
+Sim(beat, fire, "conf")
+Sim(mars, chief, "conf")
+Sim(work, ced, "conf")
+Sim(las, bandits, "conf")
+//3THREAT HAS A BYE.
+Sim(urban, mech, "conf")
+//BRICKSTERBOTS HAVE A BYE.
+//WEEK 1
+//1 BYE
+//DFL
+document.write("Week 1 is under way.<br />")
+Sim(astro, adv_exp, "conf")
+Sim(space, tri, "conf")
+Sim(pirate, pilot, "conf")
+Sim(villains, ship, "conf")
+Sim(arc_exp, medics, "conf")
+Sim(wcb, law, "conf")
+Sim(lion, square, "conf")
+//SKELETON SOLDIERS HAVE A BYE.
+//ESC
+Sim(inter, mars, "conf")
+Sim(brick, urban, "conf")
+Sim(beat, work, "conf")
+Sim(las, strikers, "conf")
+Sim(fire, mech, "conf")
+Sim(chief, ced, "conf")
+Sim(bandits, threat, "conf")
+//WEEK 2
+//1 BYE
+//DFL
+document.write("<br />Week 2 is under way.<br />")
+//ASTRONAUTS HAVE A BYE.
+Sim(adv_exp, space, "conf")
+Sim(tri, pirate, "conf")
+Sim(pilot, villains, "conf")
+Sim(ship, arc_exp, "conf")
+Sim(medics, wcb, "conf")
+Sim(law, lion, "conf")
+Sim(square, skel, "conf")
+//ESC
+Sim(mars, brick, "conf")
+Sim(urban, beat, "conf")
+Sim(work, las, "conf")
+Sim(strikers, fire, "conf")
+Sim(mech, chief, "conf")
+Sim(ced, bandits, "conf")
+Sim(threat, inter, "conf")
+//WEEK 3
+//1 BYE
+//DFL
+document.write("<br />Week 3 is under way.<br />")
+Sim(astro, space, "conf")
+//ADVENTURER'S EXPLORERS HAVE A BYE.
+Sim(pilot, tri, "conf")
+Sim(pirate, villains, "conf")
+Sim(ship, medics, "conf")
+Sim(arc_exp, wcb, "conf")
+Sim(square, law, "conf")
+Sim(lion, skel, "conf")
+//ESC
+Sim(mars, urban, "conf")
+Sim(beat, las, "conf")
+Sim(work, strikers, "conf")
+Sim(fire, chief, "conf")
+Sim(mech, ced, "conf")
+Sim(bandits, inter, "conf")
+Sim(threat, brick, "conf")
+//WEEK 18
+//29 BYES
+//DFL
+document.write("<br />Week 18 is under way.<br />")
+//ASTRONAUTS HAVE A BYE.
+//ADVENTURER'S EXPLORERS HAVE A BYE.
+//SPACE TECHNICIANS HAVE A BYE.
+//TRICORNER PIRATES HAVE A BYE.
+//PIRATE SKELETONS HAVE A BYE.
+//ADVENTURER'S PILOTS HAVE A BYE.
+//ADVENTURER'S VILLAINS HAVE A BYE.
+//SHIPSHAPE SHIPMATES HAVE A BYE.
+//ARCTIC EXPLORERS HAVE A BYE.
+//ARCTIC MEDICS HAVE A BYE.
+//WESTERN COWBOYS HAVE A BYE.
+//LAWBRINGERS HAVE A BYE.
+//LEO'S LIONS HAVE A BYE.
+//SQUARE TABLE HAS A BYE.
+//SKELETON SOLDIERS HAVE A BYE.
+//ESC
+//INTERGALACTIC HAS A BYE.
+//MARTIANS HAVE A BYE.
+//BRICKSTERBOTS HAVE A BYE.
+//URBAN BOMBS HAVE A BYE.
+//BEATERS HAVE A BYE.
+//CONSTRUCTION WORKERS HAVE A BYE.
+//LEGO ALL STARS HAVE A BYE.
+//CITY STRIKERS HAVE A BYE.
+//FIREFIGHTERS HAVE A BYE.
+//ARCTIC MECHANICS HAVE A BYE.
+//CHIEF'S TRIBE HAS A BYE.
+//CEDRIC'S KNIGHTS A BYE.
+//BANDITS HAS A BYE.
+//3THREAT HAS A BYE.
 }
 SortRank()
 function TeamIsRanked(team) {
@@ -108,13 +516,23 @@ return i + 1;
 break
 }
 }
+return "NR"
 }
-function RandomTeams() {
-Sim(Teams[Math.floor(Math.random() * Teams.length)],Teams[Math.floor(Math.random() * Teams.length)],"norm");
+function RandomTeams(conference) {
+if(conference == "ESC") {
+Sim(ESC[Math.floor(Math.random() * ESC.length)],ESC[Math.floor(Math.random() * ESC.length)],"norm")
+}
+else if(conference == "DFL") {
+Sim(DFL[Math.floor(Math.random() * DFL.length)],DFL[Math.floor(Math.random() * DFL.length)],"norm")
+}
+else {
+Sim(Teams[Math.floor(Math.random() * Teams.length)],Teams[Math.floor(Math.random() * Teams.length)],"norm")
+};
 }
 //Sim(law, ship)
-RandomTeams()
-setInterval(RandomTeams,600)
+//RandomTeams()
+RunSeason()
+//setInterval(RandomTeams,600)
 
 // Sim Random Teams
 //Sim(Teams[Math.floor(Math.random() * Teams.length)],Teams[Math.floor(Math.random() * Teams.length)],"norm");
@@ -132,77 +550,77 @@ document.title = team1.name + " vs. #" + team2.ranking + " " + team2.name + "";
 if(team1.ranking > 15 && team2.ranking > 15) {
 document.title = team1.name + " vs. " + team2.name + "";
 }
-document.write("<div style='position:absolute;right:0%;left:80%;width:20%;top:0%;'></div>")
-document.write("<p style='width:80%'></div>");
+//document.write("<div style='position:absolute;right:0%;left:80%;width:20%;top:0%;'></div>")
+//document.write("<p style='width:80%'></div>");
 //alert("Simmed!")
 //console.log(team1.name + "'s ranking before the game was " + team1.ranking + ".")
 //console.log(team2.name + "'s ranking before the game was " + team2.ranking + ".")
-var game = {team1, team2, sig}
+var game = {team1: team1, team2: team2, sig: sig}
 game.team1 = {score:0}
 game.team2 = {score:0}
 game.sig = sig
 //console.log("Game initiated.");
 if(team1.ranking < 16 && team2.ranking < 16) {
-document.write("Amar: Hi, I'm Amar Payton, and you're listening to LSN, the Lego Soccer Network. We have the #" + team1.ranking + " " + team1.name + " vs. the #" + team2.ranking + " " + team2.name + ".<br />");
+//document.write("Amar: Hi, I'm Amar Payton, and you're listening to LSN, the Lego Soccer Network. We have the #" + team1.ranking + " " + team1.name + " vs. the #" + team2.ranking + " " + team2.name + ".<br />");
 }
 if(team1.ranking < 16 && team2.ranking > 15) {
-document.write("Amar: Hi, I'm Amar Payton, and you're listening to LSN, the Lego Soccer Network. We have the #" + team1.ranking + " " + team1.name + " vs. the " + team2.name + ".<br />");
+//document.write("Amar: Hi, I'm Amar Payton, and you're listening to LSN, the Lego Soccer Network. We have the #" + team1.ranking + " " + team1.name + " vs. the " + team2.name + ".<br />");
 }
 if(team1.ranking > 15 && team2.ranking < 16) {
-document.write("Amar: Hi, I'm Amar Payton, and you're listening to LSN, the Lego Soccer Network. We have the " + team1.name + " vs. the #" + team2.ranking + " " + team2.name + ".<br />");
+//document.write("Amar: Hi, I'm Amar Payton, and you're listening to LSN, the Lego Soccer Network. We have the " + team1.name + " vs. the #" + team2.ranking + " " + team2.name + ".<br />");
 }
 if(team1.ranking > 15 && team2.ranking > 15) {
-document.write("Amar: Hi, I'm Amar Payton, and you're listening to LSN, the Lego Soccer Network. We have the " + team1.name + " vs. the " + team2.name + ".<br />");
+//document.write("Amar: Hi, I'm Amar Payton, and you're listening to LSN, the Lego Soccer Network. We have the " + team1.name + " vs. the " + team2.name + ".<br />");
 }
-document.write("Amar: It's time for our two analysts to give their predictions, Freddy Fit and Mak Megahertz.<br />")
-document.write("Freddy: Thanks Amar.<br />")
-document.write("Mak: Excited to be here.<br />")
-document.write("Amar: So Mak, let's start with you. What are your thoughts going into this game?<br />")
+//document.write("Amar: It's time for our two analysts to give their predictions, Freddy Fit and Mak Megahertz.<br />")
+//document.write("Freddy: Thanks Amar.<br />")
+//document.write("Mak: Excited to be here.<br />")
+//document.write("Amar: So Mak, let's start with you. What are your thoughts going into this game?<br />")
 Mak = 0
 if(team1.ranking < team2.ranking && team1.WP + team1.BP / 2 > team2.WP + team2.BP) {
-document.write("Mak: Maybe this sounds crazy, but I think " + team2.name + " will pull off the upset here. Look, they've got a stronger defense than " + team1.name + ", and these guys are motivated. Expect to see them come out of the game with a big fat W.<br />")
+//document.write("Mak: Maybe this sounds crazy, but I think " + team2.name + " will pull off the upset here. Look, they've got a stronger defense than " + team1.name + ", and these guys are motivated. Expect to see them come out of the game with a big fat W.<br />")
 //document.write("Amar: Don't you have any prediction about what the score will be? Will this game be close?");
 Mak = 2
 }
 if(team1.ranking > team2.ranking && team1.WP + team1.BP / 2 < team2.WP + team2.BP) {
-document.write("Mak: Shocking as this may sound, I think that " + team1.name + " will pull off the upset here. Look, they've got a stronger defense than " + team2.name + ", and lemme tell ya, these guys are motivated.<br />")
+//document.write("Mak: Shocking as this may sound, I think that " + team1.name + " will pull off the upset here. Look, they've got a stronger defense than " + team2.name + ", and lemme tell ya, these guys are motivated.<br />")
 //document.write("Amar: Don't you have any prediction about what the score will be? Will this game be close?");
 Mak = 1
 }
 if(team1.ranking < team2.ranking && team1.WP + team1.BP / 2 < team2.WP + team2.BP) {
-document.write("Mak: It really should be obvious, " + team1.name + " will walk out of here with a victory. Their defense gives up fewer goals overall, even the AP knows that they're better than the " + team2.name + "!<br />")
+//document.write("Mak: It really should be obvious, " + team1.name + " will walk out of here with a victory. Their defense gives up fewer goals overall, even the AP knows that they're better than the " + team2.name + "!<br />")
 //document.write("Amar: Don't you have any prediction about what the score will be? Will this game be close?");
 Mak = 1
 }
 if(team1.ranking > team2.ranking && team1.WP + team1.BP / 2 > team2.WP + team2.BP) {
-document.write("Mak: " + team2.name + " will likely win this game. They've got a stronger defense, and lemme tell ya, these guys are motivated.<br />")
+//document.write("Mak: " + team2.name + " will likely win this game. They've got a stronger defense, and lemme tell ya, these guys are motivated.<br />")
 //document.write("Amar: Don't you have any prediction about what the score will be? Will this game be close?");
 Mak = 2
 }
 if(Mak == 0 && team1.WP + team1.BP / 2 < team2.WP + team2.BP) {
-document.write("Mak: I think, " + team1.name + " will walk out of here with a victory. Their defense is stronger than the " + team2.name + " defense, and lemme tell ya, defense wins ballgames!<br />")
+//document.write("Mak: I think, " + team1.name + " will walk out of here with a victory. Their defense is stronger than the " + team2.name + " defense, and lemme tell ya, defense wins ballgames!<br />")
 //document.write("Amar: Don't you have any prediction about what the score will be? Will this game be close?");
 Mak = 1
 }
 if(Mak == 0 && team1.WP + team1.BP / 2 > team2.WP + team2.BP) {
-document.write("Mak: Seriously, you should know this, " + team2.name + " will absolutely win. They have better defense than " + team1.name + ", and that's what's most important when you're trying to win games.<br />")
+//document.write("Mak: Seriously, you should know this, " + team2.name + " will absolutely win. They have better defense than " + team1.name + ", and that's what's most important when you're trying to win games.<br />")
 //document.write("Amar: Don't you have any prediction about what the score will be? Will this game be close?");
 Mak = 1
 }
-document.write("Amar: Thanks, Mak. Freddy, what do you think?<br />")
+//document.write("Amar: Thanks, Mak. Freddy, what do you think?<br />")
 if(team1.VsW + team1.VsB / 2 > team2.VsW + team2.VsB && Mak == 1) {
-document.write("Freddy: I agree with Mak, " + team1.name + " will most likely win this game because their offense is better. I think that matters a lot.<br />");
+//document.write("Freddy: I agree with Mak, " + team1.name + " will most likely win this game because their offense is better. I think that matters a lot.<br />");
 }
 if(team1.VsW + team1.VsB / 2 > team2.VsW + team2.VsB && Mak == 2) {
-document.write("Freddy: On the contrary, Mak, " + team1.name + " will most likely win this game. Their offense is better, and I think that counts a lot. All told, though, every Lego Soccer game is a good Lego Soccer game, and I can't wait to see who will win this one.<br />");
+//document.write("Freddy: On the contrary, Mak, " + team1.name + " will most likely win this game. Their offense is better, and I think that counts a lot. All told, though, every Lego Soccer game is a good Lego Soccer game, and I can't wait to see who will win this one.<br />");
 }
 if(team1.VsW + team1.VsB / 2 < team2.VsW + team2.VsB && Mak == 2) {
-document.write("Freddy: I agree with Mak, " + team2.name + " will most likely win this game. Their offense is better than " + team1.name + " , and I think that counts a lot. All told, though, every Lego Soccer game is a good Lego Soccer game, and I can't wait to see who will win this one.<br />");
+//document.write("Freddy: I agree with Mak, " + team2.name + " will most likely win this game. Their offense is better than " + team1.name + " , and I think that counts a lot. All told, though, every Lego Soccer game is a good Lego Soccer game, and I can't wait to see who will win this one.<br />");
 }
 if(team1.VsW + team1.VsB / 2 < team2.VsW + team2.VsB && Mak == 1) {
-document.write("Freddy: On the contrary, Mak, " + team2.name + " will most likely win this game because of their offense. Whoever wins without scoring? Not " + team1.name + ", however it looks like that's exactly what they're trying to do.<br />");
+//document.write("Freddy: On the contrary, Mak, " + team2.name + " will most likely win this game because of their offense. Whoever wins without scoring? Not " + team1.name + ", however it looks like that's exactly what they're trying to do.<br />");
 }
-document.write("Amar: Without further ado, let's sim the game!<br />");
+//document.write("Amar: Without further ado, let's sim the game!<br />");
 //console.log("Greeting complete.");
 if(team1.ranking > team2.ranking) {
 game.team1.score = team1.VsW + team2.BP / 2;
@@ -216,16 +634,26 @@ game.team1.score = Math.round(game.team1.score);
 game.team2.score = Math.round(game.team2.score);
 //console.log("Scores tallied.");
 if(game.team1.score > game.team2.score) {
-document.write("** The " + team1.name + " came out on top, beating " + team2.name + " " + game.team1.score + " to " + game.team2.score + ".<br />")
+document.write(team1.name + " " + game.team1.score + " - " + team2.name + " " + game.team2.score + "<br />")
+//document.write("** The " + team1.name + " came out on top, beating " + team2.name + " " + game.team1.score + " to " + game.team2.score + ".<br />")
 //console.log("Announcment made.");
 }
 if(game.team2.score > game.team1.score) {
-document.write("** " + team2.name + " got the hometown win, beating " + team1.name + " " + game.team1.score + " to " + game.team2.score + ".<br />")
+document.write(team1.name + " " + game.team1.score + " - " + team2.name + " " + game.team2.score + "<br />")
+//document.write("** " + team2.name + " got the hometown win, beating " + team1.name + " " + game.team1.score + " to " + game.team2.score + ".<br />")
 //console.log("Announcment made.");
 }
 if(game.team2.score == game.team1.score) {
-First = Math.random();
-Second = Math.random();
+if(team1.VsB > team2.VsB) {
+First = 1
+Second = 0
+//First = Math.random();
+//Second = Math.random();
+}
+else {
+First = 0
+Second = 1
+}
 if(First > Second) {
 game.team1.score = game.team1.score + 1;
 }
@@ -233,11 +661,13 @@ if(Second > First) {
 game.team2.score = game.team2.score + 1;
 }
 if(game.team1.score > game.team2.score) {
-document.write("** After a grueling match, " + team1.name + " came out on top, beating " + team2.name + " " + game.team1.score + " to " + game.team2.score + " in overtime.<br />")
+document.write(team1.name + " " + game.team1.score + " - " + team2.name + " " + game.team2.score + " [OT]<br />")
+//document.write("** After a grueling match, " + team1.name + " came out on top, beating " + team2.name + " " + game.team1.score + " to " + game.team2.score + " in overtime.<br />")
 //console.log("Announcment made.");
 }
 if(game.team2.score > game.team1.score) {
-document.write("** " + team2.name + " got the hometown win, beating " + team1.name + " " + game.team1.score + " to " + game.team2.score + " in overtime.<br />")
+document.write(team1.name + " " + game.team1.score + " - " + team2.name + " " + game.team2.score + " [OT]<br />")
+//document.write("** " + team2.name + " got the hometown win, beating " + team1.name + " " + game.team1.score + " to " + game.team2.score + " in overtime.<br />")
 //console.log("Announcment made.");
 }
 }
@@ -328,24 +758,39 @@ console.log(team1.name + " beat " + team2.name + " by a score of " + game.team1.
 else {
 console.log(team1.name + " beat " + team2.name + " by a score of " + game.team1.score + " to " + game.team2.score + ".")
 }
+
 SortRank()
 div = document.getElementsByTagName("div");
 div[0].innerHTML = 
-"#1 " + Teams[0].name + " " + Teams[0].wins + "-" + Teams[0].loss + "<br />"
-+ "#2 " + Teams[1].name + " " + Teams[1].wins + "-" + Teams[1].loss + "<br />"
-+ "#3 " + Teams[2].name + " " + Teams[2].wins + "-" + Teams[2].loss + "<br />"
-+ "#4 " + Teams[3].name + " " + Teams[3].wins + "-" + Teams[3].loss + "<br />"
-+ "#5 " + Teams[4].name + " " + Teams[4].wins + "-" + Teams[4].loss + "<br />"
-+ "#6 " + Teams[5].name + " " + Teams[5].wins + "-" + Teams[5].loss + "<br />"
-+ "#7 " + Teams[6].name + " " + Teams[6].wins + "-" + Teams[6].loss + "<br />"
-+ "#8 " + Teams[7].name + " " + Teams[7].wins + "-" + Teams[7].loss + "<br />"
-+ "#9 " + Teams[8].name + " " + Teams[8].wins + "-" + Teams[8].loss + "<br />"
-+ "#10 " + Teams[9].name + " " + Teams[9].wins + "-" + Teams[9].loss + "<br />"
-+ "#11 " + Teams[10].name + " " + Teams[10].wins + "-" + Teams[10].loss + "<br />"
-+ "#12 " + Teams[11].name + " " + Teams[11].wins + "-" + Teams[11].loss + "<br />"
-+ "#13 " + Teams[12].name + " " + Teams[12].wins + "-" + Teams[12].loss + "<br />"
-+ "#14 " + Teams[13].name + " " + Teams[13].wins + "-" + Teams[13].loss + "<br />"
-+ "#15 " + Teams[14].name + " " + Teams[14].wins + "-" + Teams[14].loss + "<br />";
+"Top 15:<br />"
++ "#1 " + Teams[0].nickname + " " + Teams[0].wins + "-" + Teams[0].loss + "<br />"
++ "#2 " + Teams[1].nickname + " " + Teams[1].wins + "-" + Teams[1].loss + "<br />"
++ "#3 " + Teams[2].nickname + " " + Teams[2].wins + "-" + Teams[2].loss + "<br />"
++ "#4 " + Teams[3].nickname + " " + Teams[3].wins + "-" + Teams[3].loss + "<br />"
++ "#5 " + Teams[4].nickname + " " + Teams[4].wins + "-" + Teams[4].loss + "<br />"
++ "#6 " + Teams[5].nickname + " " + Teams[5].wins + "-" + Teams[5].loss + "<br />"
++ "#7 " + Teams[6].nickname + " " + Teams[6].wins + "-" + Teams[6].loss + "<br />"
++ "#8 " + Teams[7].nickname + " " + Teams[7].wins + "-" + Teams[7].loss + "<br />"
++ "#9 " + Teams[8].nickname + " " + Teams[8].wins + "-" + Teams[8].loss + "<br />"
++ "#10 " + Teams[9].nickname + " " + Teams[9].wins + "-" + Teams[9].loss + "<br />"
++ "#11 " + Teams[10].nickname + " " + Teams[10].wins + "-" + Teams[10].loss + "<br />"
++ "#12 " + Teams[11].nickname + " " + Teams[11].wins + "-" + Teams[11].loss + "<br />"
++ "#13 " + Teams[12].nickname + " " + Teams[12].wins + "-" + Teams[12].loss + "<br />"
++ "#14 " + Teams[13].nickname + " " + Teams[13].wins + "-" + Teams[13].loss + "<br />"
++ "#15 " + Teams[14].nickname + " " + Teams[14].wins + "-" + Teams[14].loss + "<br /><br />"
++ "STANDINGS<br />"
++ "DFL:<br />"
++ "#1 (" + TeamIsRanked(DFL[0]) + ") " + DFL[0].nickname + " " + DFL[0].wins + "-" + DFL[0].loss + "<br />"
++ "#2 (" + TeamIsRanked(DFL[1]) + ") " + DFL[1].nickname + " " + DFL[1].wins + "-" + DFL[1].loss + "<br />"
++ "#3 (" + TeamIsRanked(DFL[2]) + ") " + DFL[2].nickname + " " + DFL[2].wins + "-" + DFL[2].loss + "<br />"
++ "#4 (" + TeamIsRanked(DFL[3]) + ") " + DFL[3].nickname + " " + DFL[3].wins + "-" + DFL[3].loss + "<br />"
++ "#5 (" + TeamIsRanked(DFL[4]) + ") " + DFL[4].nickname + " " + DFL[4].wins + "-" + DFL[4].loss + "<br /><br />"
++ "ESC:<br />"
++ "#1 (" + TeamIsRanked(ESC[0]) + ") " + ESC[0].nickname + " " + ESC[0].wins + "-" + ESC[0].loss + "<br />"
++ "#2 (" + TeamIsRanked(ESC[1]) + ") " + ESC[1].nickname + " " + ESC[1].wins + "-" + ESC[1].loss + "<br />"
++ "#3 (" + TeamIsRanked(ESC[2]) + ") " + ESC[2].nickname + " " + ESC[2].wins + "-" + ESC[2].loss + "<br />"
++ "#4 (" + TeamIsRanked(ESC[3]) + ") " + ESC[3].nickname + " " + ESC[3].wins + "-" + ESC[3].loss + "<br />"
++ "#5 (" + TeamIsRanked(ESC[4]) + ") " + ESC[4].nickname + " " + ESC[4].wins + "-" + ESC[4].loss + "<br />";
 //Sim(Teams[Math.floor(Math.random() * Teams.length)],Teams[Math.floor(Math.random() * Teams.length)],"norm");
 console.log("The " + team1.name + " are now ranked " + TeamIsRanked(team1))
 console.log("The " + team2.name + " are now ranked " + TeamIsRanked(team2))

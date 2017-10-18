@@ -1,0 +1,113 @@
+LTC (6)
+Astronauts
+Adventurer's Explorers
+Space Technicians
+Tricorner Priates
+Pirate Skeletons
+Adventurer's Pilots
+
+Independents (5)
+Intergalactic
+Adventurer's Villains
+Shipshape Shipmates
+Martians
+Bricksterbots
+
+NSC (9)
+Urban Bombs
+Beaters
+Construction Workers
+Lego All Stars
+City Strikers
+Firefighters
+Arctic Mechanics
+Arctic Explorers
+Arctic Medics
+
+WWC (9)
+Western Cowboys
+Lawbringers
+Leo's Lions
+Square Table
+Chief's Tribe
+Cedric's Knights
+Skeleton Soldiers
+Bandits
+3Threat
+
+Discoverer's Football League (DFL) [15]
+Astronauts
+Adventurer's Explorers
+Space Technicians
+Tricorner Pirates
+Pirate Skeletons
+Adventurer's Pilots
+Adventurer's Villains
+Shipshape Shipmates
+Arctic Explorers
+Arctic Medics
+Western Cowboys
+Lawbringers
+Leo's Lions
+Square Table
+Skeleton Soldiers
+
+Elite Soccer Cofference (ESC) [14]
+Intergalactic
+Martians
+Bricksterbots
+Urban Bombs
+Beaters
+Construction Workers
+Lego All Stars
+City Strikers
+Firefighters
+Arctic Mechanics
+Chief's Tribe
+Cedric's Knights
+Bandits
+3Threat
+
+__AVERY__
+
+Lego City Conference (LCC) [5]
+Urban Bombs
+Beaters
+Construction Workers
+Lego All Stars
+City Strikers
+
+Wild West Conference (WWC) [5]
+Western Cowboys
+Chief's Tribe
+Lawbringers
+Bandits
+3Threat
+
+Knights League (KL) [4]
+Leo's Lion's
+Square Table
+Cedric's Knights
+Skeleton Soldiers
+
+Pirates Conference (PC) [3]
+Pirate Skeletons
+Shipshape Shipmates
+Tricorner Pirates
+
+Space Conference (SC) [5]
+Astronauts
+Intergalactic
+Space Technicians
+Martians
+Bricksterbots
+
+Adventurers Conference (AC) [3]
+Adventurers Pilots
+Adventurers Villains
+Adventurers Explorers
+
+Arctic League (AL) [3]
+Arctic Explorers
+Arctic Medics
+Arctic Mechanics

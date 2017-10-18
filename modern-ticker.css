@@ -1,0 +1,885 @@
+body {
+font-size: 2vw;
+}
+ticker {
+position: fixed;
+bottom: 0vh;
+left: 0px;
+height: 10vh;
+width: 1000vw;
+background-color: black;
+text-overflow: clip;
+overflow:hidden;
+border-color: gray;
+border-style: solid;
+border-width: 3px;
+}
+ticker#breaking {
+position: fixed;
+bottom: 0vh;
+left: 0px;
+height: 10vh;
+width: 1000vw;
+background-color: black;
+text-overflow: clip;
+overflow:hidden;
+border-color: gray;
+border-style: solid;
+border-width: 3px;
+animation-name: breakin;
+animation-duration: 25s;
+}
+@keyframes breakin {
+0% {
+background-color: black;
+}
+10% {
+background-color: red;
+}
+90% {
+background-color: red;
+}
+100% {
+background-color: black;
+}
+}
+bottom_bar {
+position: fixed;
+bottom: 0vh;
+left: 0px;
+height: 6vh;
+width: 100vw;
+background-color: gray;
+text-overflow: clip;
+overflow:hidden;
+z-index: 3;
+}
+lowbug#active {
+position: fixed;
+bottom: 0vh;
+right: 0vw;
+width: 10vw;
+height: 10.5vh;
+background-color: gray;
+color: white;
+z-index: 3;
+}
+left_bug#active {
+position: fixed;
+bottom: 0vh;
+left: 0vw;
+width: 5vw;
+height: 10.5vh;
+background-color: gray;
+color: white;
+z-index: 3;
+}
+lowbug#hidden {
+position: fixed;
+bottom: -1000vh;
+left: -1000vw;
+width: 0vw;
+height: 0vh;
+}
+subject#active {
+position: fixed;
+bottom: 0vh;
+left: 4.5vw;
+width: 9vw;
+height: 10vh;
+background-color: black;
+color: white;
+z-index: 2;
+border-color: gray;
+border-style: solid;
+border-width: .3vw;
+box-shadow: 1vw 1vw 2vw black;
+text-align: center;
+}
+subject#show {
+position: fixed;
+bottom: 5vh;
+left: 0px;
+width: 9vw;
+height: 5vh;
+background-color: black;
+color: white;
+z-index: 2;
+border-color: gray;
+border-style: solid;
+border-right-width: 3px;
+animation-name: showUp;
+animation-duration: 25s;
+text-align: center;
+}
+subject#show2 {
+position: fixed;
+bottom: 5vh;
+left: 0px;
+width: 9vw;
+height: 5vh;
+background-color: black;
+color: white;
+z-index: 2;
+border-color: gray;
+border-style: solid;
+border-right-width: 3px;
+animation-name: showUp2;
+animation-duration: 25s;
+text-align: center;
+}
+subject#show3 {
+position: fixed;
+bottom: 5vh;
+left: 0px;
+width: 9vw;
+height: 5vh;
+background-color: black;
+color: white;
+z-index: 2;
+border-color: gray;
+border-style: solid;
+border-right-width: 3px;
+animation-name: showUp3;
+animation-duration: 25s;
+text-align: center;
+}
+subject#show4 {
+position: fixed;
+bottom: 5vh;
+left: 0px;
+width: 9vw;
+height: 5vh;
+background-color: black;
+color: white;
+z-index: 2;
+border-color: gray;
+border-style: solid;
+border-right-width: 3px;
+animation-name: showUp4;
+animation-duration: 25s;
+text-align: center;
+}
+subject#show5 {
+position: fixed;
+bottom: 5vh;
+left: 0px;
+width: 9vw;
+height: 5vh;
+background-color: black;
+color: white;
+z-index: 2;
+border-color: gray;
+border-style: solid;
+border-right-width: 3px;
+animation-name: showUp5;
+animation-duration: 25s;
+text-align: center;
+}
+subject#show6 {
+position: fixed;
+bottom: 5vh;
+left: 0px;
+width: 9vw;
+height: 5vh;
+background-color: black;
+color: white;
+z-index: 2;
+border-color: gray;
+border-style: solid;
+border-right-width: 3px;
+animation-name: showUp6;
+animation-duration: 25s;
+text-align: center;
+}
+subject#show7 {
+position: fixed;
+bottom: 5vh;
+left: 0px;
+width: 9vw;
+height: 5vh;
+background-color: black;
+color: white;
+z-index: 1;
+border-color: gray;
+border-style: solid;
+border-right-width: 3px;
+animation-name: showUp7;
+animation-duration: 25s;
+text-align: center;
+}
+subject#hidden {
+position: fixed;
+bottom: -1000vh;
+left: -1000vw;
+width: 0vw;
+height: 0vh;
+}
+scroller#active {
+position: relative;
+bottom: 0px;
+left: 0px;
+width: 1000vw;
+height: 5vh;
+background-clip: content-box;
+color: white;
+animation-name: scroller;
+animation-duration: 25s;
+animation-timing-function: linear;
+}
+scroller#breaking {
+position: relative;
+bottom: 0px;
+left: 0px;
+width: 1000vw;
+height: 5vh;
+background-clip: content-box;
+color: white;
+animation-name: breaking;
+animation-duration: 25s;
+animation-timing-function: linear;
+}
+scroller#short {
+position: relative;
+bottom: 0px;
+left: 0px;
+width: 1000vw;
+height: 5vh;
+background-clip: content-box;
+color: white;
+animation-name: short;
+animation-duration: 25s;
+animation-timing-function: linear;
+}
+scroller#peek {
+position: relative;
+bottom: 0px;
+left: 0px;
+width: 1000vw;
+height: 5vh;
+background-clip: content-box;
+color: white;
+animation-name: peek;
+animation-duration: 25s;
+animation-timing-function: linear;
+}
+scroller#bump-short {
+position: relative;
+bottom: 0px;
+left: 0vw;
+width: 1000vw;
+height: 5vh;
+background-clip: content-box;
+color: white;
+animation-name: bump-short;
+animation-duration: 25s;
+animation-timing-function: linear;
+}
+scroller#hidden {
+position: fixed;
+bottom: -1000vh;
+left: -1000vw;
+width: 0vw;
+height: 0vh;
+}
+@keyframes scroller {
+0% {
+position: fixed;
+left: 15vw;
+bottom: -5vh;
+}
+5% {
+position: fixed;
+left: 15vw;
+bottom: -.5vh;
+}
+20% {
+position: fixed;
+left: 15vw;
+bottom: -.5vh;
+}
+100% {
+position: fixed;
+left: -250vw;
+bottom: -.5vh;
+}
+}
+@keyframes breaking {
+0% {
+position: fixed;
+left: 15vw;
+bottom: -.5vh;
+opacity: 0;
+}
+5% {
+position: fixed;
+left: 15vw;
+bottom: -.5vh;
+opacity: 1;
+}
+20% {
+position: fixed;
+left: 15vw;
+bottom: -.5vh;
+}
+100% {
+position: fixed;
+left: -250vw;
+bottom: -.5vh;
+}
+}
+@keyframes short {
+0% {
+position: fixed;
+left: 14vw;
+bottom: -5vh;
+}
+5% {
+position: fixed;
+left: 14vw;
+bottom: 0vh;
+}
+95% {
+position: fixed;
+left: 14vw;
+bottom: 0vh;
+}
+100% {
+position: fixed;
+left: 14vw;
+bottom: 5vh;
+}
+}
+@keyframes peek {
+0% {
+position: fixed;
+left: 14vw;
+bottom: -.3vh;
+opacity: 0;
+}
+5% {
+position: fixed;
+left: 14vw;
+bottom: -.3vh;
+opacity: 1;
+}
+95% {
+position: fixed;
+left: 14vw;
+bottom: -.3vh;
+opacity: 1;
+}
+100% {
+position: fixed;
+left: 14vw;
+bottom: -.3vh;
+opacity: 0;
+}
+}
+@keyframes bump-short {
+0% {
+position: fixed;
+left: 13.3vw;
+bottom: -5vh;
+}
+5% {
+position: fixed;
+left: 13.3vw;
+bottom: -.1vh;
+}
+95% {
+position: fixed;
+left: 13.3vw;
+bottom: -.1vh;
+}
+100% {
+position: fixed;
+left: 13.3vw;
+bottom: 5vh;
+}
+}
+@keyframes short4bump {
+0% {
+position: fixed;
+left: 4.2vw;
+bottom: 0vh;
+}
+5% {
+position: fixed;
+left: 4.2vw;
+bottom: 5vh;
+}
+95% {
+position: fixed;
+left: 4.2vw;
+bottom: 5vh;
+}
+100% {
+position: fixed;
+left: 4.2vw;
+bottom: 10vh;
+}
+}
+@keyframes showUp {
+0% {
+position: relative;
+left: 4.5vw;
+bottom: 5vh;
+}
+20% {
+position: relative;
+left: 4.5vw;
+bottom: 5vh;
+}
+30% {
+position: relative;
+left: -8.5vw;
+bottom: 5vh;
+}
+100% {
+position: relative;
+left: -8.5vw;
+bottom: 5vh;
+}
+}
+@keyframes showUp2 {
+0% {
+position: relative;
+left: 18.5vw;
+bottom: 5vh;
+opacity: 0;
+}
+10% {
+position: relative;
+left: 18.5vw;
+bottom: 5vh;
+opacity: 1;
+}
+20% {
+position: relative;
+left: 18.5vw;
+bottom: 5vh;
+opacity: 1;
+}
+30% {
+position: relative;
+left: 4.5vw;
+bottom: 5vh;
+opacity: 1;
+}
+100% {
+position: relative;
+left: 4.5vw;
+bottom: 5vh;
+opacity: 1;
+}
+}
+@keyframes showUp3 {
+0% {
+position: relative;
+left: 32.5vw;
+bottom: 5vh;
+opacity: 0;
+}
+10% {
+position: relative;
+left: 32.5vw;
+bottom: 5vh;
+opacity: 1;
+}
+20% {
+position: relative;
+left: 32.5vw;
+bottom: 5vh;
+opacity: 1;
+}
+30% {
+position: relative;
+left: 18.5vw;
+bottom: 5vh;
+opacity: 1;
+}
+70% {
+position: relative;
+left: 18.5vw;
+bottom: 5vh;
+opacity: 1;
+}
+80% {
+position: relative;
+left: 18.5vw;
+bottom: 5vh;
+opacity: 0;
+}
+100% {
+position: relative;
+left: 18.5vw;
+bottom: 5vh;
+opacity: 0;
+}
+}
+@keyframes showUp4 {
+0% {
+position: relative;
+left: 46.5vw;
+bottom: 5vh;
+opacity: 0;
+}
+10% {
+position: relative;
+left: 46.5vw;
+bottom: 5vh;
+opacity: 1;
+}
+20% {
+position: relative;
+left: 46.5vw;
+bottom: 5vh;
+opacity: 1;
+}
+30% {
+position: relative;
+left: 32.5vw;
+bottom: 5vh;
+opacity: 1;
+}
+70% {
+position: relative;
+left: 32.5vw;
+bottom: 5vh;
+opacity: 1;
+}
+80% {
+position: relative;
+left: 32.5vw;
+bottom: 5vh;
+opacity: 0;
+}
+100% {
+position: relative;
+left: 32.5vw;
+bottom: 5vh;
+opacity: 0;
+}
+}
+@keyframes showUp5 {
+0% {
+position: relative;
+left: 60.5vw;
+bottom: 5vh;
+opacity: 0;
+}
+10% {
+position: relative;
+left: 60.5vw;
+bottom: 5vh;
+opacity: 1;
+}
+20% {
+position: relative;
+left: 60.5vw;
+bottom: 5vh;
+opacity: 1;
+}
+30% {
+position: relative;
+left: 46.5vw;
+bottom: 5vh;
+opacity: 1;
+}
+70% {
+position: relative;
+left: 46.5vw;
+bottom: 5vh;
+opacity: 1;
+}
+80% {
+position: relative;
+left: 46.5vw;
+bottom: 5vh;
+opacity: 0;
+}
+100% {
+position: relative;
+left: 46.5vw;
+bottom: 5vh;
+opacity: 0;
+}
+}
+@keyframes showUp6 {
+0% {
+position: relative;
+left: 74.5vw;
+bottom: 5vh;
+opacity: 0;
+}
+10% {
+position: relative;
+left: 74.5vw;
+bottom: 5vh;
+opacity: 1;
+}
+20% {
+position: relative;
+left: 74.5vw;
+bottom: 5vh;
+opacity: 1;
+}
+30% {
+position: relative;
+left: 60.5vw;
+bottom: 5vh;
+opacity: 1;
+}
+70% {
+position: relative;
+left: 60.5vw;
+bottom: 5vh;
+opacity: 1;
+}
+80% {
+position: relative;
+left: 60.5vw;
+bottom: 5vh;
+opacity: 0;
+}
+100% {
+position: relative;
+left: 60.5vw;
+bottom: 5vh;
+opacity: 0;
+}
+}
+@keyframes showUp7 {
+0% {
+position: relative;
+left: 88.5vw;
+bottom: 5vh;
+opacity: 0;
+}
+10% {
+position: relative;
+left: 88.5vw;
+bottom: 5vh;
+opacity: 1;
+}
+20% {
+position: relative;
+left: 88.5vw;
+bottom: 5vh;
+opacity: 1;
+}
+30% {
+position: relative;
+left: 74.5vw;
+bottom: 5vh;
+opacity: 1;
+}
+70% {
+position: relative;
+left: 74.5vw;
+bottom: 5vh;
+opacity: 1;
+}
+80% {
+position: relative;
+left: 74.5vw;
+bottom: 5vh;
+opacity: 0;
+}
+100% {
+position: relative;
+left: 74.5vw;
+bottom: 5vh;
+opacity: 0;
+}
+}
+bump#active {
+position: fixed;
+bottom: 0vh;
+left: 4vw;
+width: 5vw;
+height: 5vh;
+color: white;
+z-index: 2;
+text-align: center;
+border-color: gray;
+border-style: solid;
+border-width: 1vh;
+animation-name: short4bump;
+animation-duration: 25s;
+animation-timing-function: linear;
+}
+bump#shown {
+position: relative;
+bottom: 0vh;
+width: 5vw;
+height: 5vh;
+color: white;
+z-index: 2;
+text-align: center;
+border-color: gray;
+border-style: solid;
+border-width: .4vw;
+top: .5vh;
+}
+bump#hidden {
+position: fixed;
+bottom: -1000vh;
+left: -1000vw;
+width: 0vw;
+height: 0vh;
+}
+team1#active {
+display: block;
+position: relative;
+bottom: 0vh;
+left: 0vw;
+width: 20vw;
+height: 5vh;
+color: black;
+z-index: 2;
+text-align: left;
+background-color: white;
+}
+team1#shown {
+position: relative;
+width: 5vw;
+height: 5vh;
+color: white;
+z-index: 2;
+text-align: center;
+border-color: gray;
+border-style: solid;
+border-width: .4vw;
+top: .5vh;
+}
+team1#hidden {
+position: fixed;
+bottom: -1000vh;
+left: -1000vw;
+width: 0vw;
+height: 0vh;
+}
+score1#active {
+display: block;
+position: relative;
+bottom: 3.8vh;
+left: 18vw;
+width: 1vw;
+height: 5vh;
+color: black;
+z-index: 2;
+text-align: right;
+}
+score1#shown {
+position: relative;
+width: 5vw;
+height: 5vh;
+color: white;
+z-index: 2;
+text-align: center;
+border-color: gray;
+border-style: solid;
+border-width: .4vw;
+top: .5vh;
+}
+score1#hidden {
+position: fixed;
+bottom: -1000vh;
+left: -1000vw;
+width: 0vw;
+height: 0vh;
+}
+team2#active {
+display: block;
+position: relative;
+bottom: 5vh;
+left: 22vw;
+width: 20vw;
+height: 5vh;
+color: black;
+z-index: 2;
+text-align: left;
+background-color: white;
+}
+team2#shown {
+position: relative;
+width: 5vw;
+height: 5vh;
+color: white;
+z-index: 2;
+text-align: center;
+border-color: gray;
+border-style: solid;
+border-width: .4vw;
+top: .5vh;
+}
+team2#hidden {
+position: fixed;
+bottom: -1000vh;
+left: -1000vw;
+width: 0vw;
+height: 0vh;
+}
+score2#active {
+display: block;
+position: relative;
+bottom: 3.8vh;
+left: 8vw;
+width: 1vw;
+height: 5vh;
+color: black;
+z-index: 2;
+text-align: right;
+}
+score2#shown {
+position: relative;
+width: 5vw;
+height: 5vh;
+color: white;
+z-index: 2;
+text-align: center;
+border-color: gray;
+border-style: solid;
+border-width: .4vw;
+top: .5vh;
+}
+score2#hidden {
+position: fixed;
+bottom: -1000vh;
+left: -1000vw;
+width: 0vw;
+height: 0vh;
+}
+desc#active {
+display: block;
+position: relative;
+bottom: 10vh;
+left: 43vw;
+width: 1vw;
+height: 5vh;
+color: white;
+z-index: 2;
+text-align: right;
+background-color: black;
+}
+desc#shown {
+position: relative;
+width: 5vw;
+height: 5vh;
+color: white;
+z-index: 2;
+text-align: center;
+border-color: gray;
+border-style: solid;
+border-width: .4vw;
+top: .5vh;
+}
+desc#hidden {
+position: fixed;
+bottom: -1000vh;
+left: -1000vw;
+width: 0vw;
+height: 0vh;
+}
